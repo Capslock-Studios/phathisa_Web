@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Scrollable Button Div</title>
+
+<style>
+  .m-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  .hidden {
+    display: none;
+  }
+  .div-content {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+    color: #ffffff;
+    text-align: center;
+    line-height: 200px;
+    font-size: 24px;
+    border-radius: 10px;
+  }
+  .button-container {
+    width: 100px;
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+  .show-button {
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .scroll-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+  }
+  .scroll-arrow::before {
+    content: "▶";
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="m-container">
+    <div id="div1" class="div-content">Div 1</div>
+    <div id="div2" class="div-content hidden">Div 2</div>
+    <div id="div3" class="div-content hidden">Div 3</div>
+    <div id="div4" class="div-content hidden">Div 4</div>
+    <div id="div5" class="div-content hidden">Div 5</div>
+  </div>
+
+
+<script>
+  function showDiv(divNumber) {
+    var allDivs = document.querySelectorAll('.div-content');
+    allDivs.forEach(function(div) {
+      div.classList.add('hidden');
+    });
+    var selectedDiv = document.getElementById('div' + divNumber);
+    selectedDiv.classList.remove('hidden');
+  }
+
+  function scrollToNext() {
+    var visibleDiv = document.querySelector('.div-content:not(.hidden)');
+    var nextDiv = visibleDiv.nextElementSibling;
+    if (nextDiv) {
+      nextDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }
+</script>
+</body>

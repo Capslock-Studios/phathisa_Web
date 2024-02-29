@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Button</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .menu-btn i {
+      font-size: 24px;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -300px; /* Initially hidden */
+      width: 300px;
+      height: 100%;
+      background-color: #333333;
+      transition: left 0.3s ease;
+    }
+
+    .menu.show-menu {
+      left: 0;
+    }
+
+    .menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #555555;
+    }
+
+    .menu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .menu ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .menu ul li a:hover {
+      color: #ff0000;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .right-menu-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .right-menu-btn i {
+      font-size: 24px;
+    }
+
+    .right-menu {
+      position: fixed;
+      top: 0;
+      right: -300px; /* Initially hidden */
+      width: 300px;
+      height: 100%;
+      background-color: #333333;
+      transition: right 0.3s ease; /* Transition the right property */
+      color: green;
+    }
+
+    .right-menu.right-show-menu {
+      right: 0; /* Slide in from the right */
+    }
+
+    .right-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .right-menu ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #555555;
+    }
+
+    .right-menu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .right-menu ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .right-menu ul li a:hover {
+      color: #ff0000;
+    }
+
+    .right-menu .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .bottom-menu-btn {
+      position: fixed;
+      bottom: 25%;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .bottom-left-menu-btn {
+      position: fixed;
+      bottom: 25%;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .bottom-menu-btn i {
+      font-size: 24px;
+    }
+
+    .bottom-menu {
+      position: fixed;
+      bottom: -100%; /* Initially hidden */
+      left: 0;
+      width: 100%;
+      height: 300px; /* Adjust height as needed */
+      background-color: #333333;
+      transition: bottom 0.3s ease;
+    }
+
+    .bottom-menu.bottom-show-menu {
+      bottom: 0;
+    }
+
+    .bottom-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .bottom-menu ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #555555;
+    }
+
+    .bottom-menu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .bottom-menu ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .bottom-menu ul li a:hover {
+      color: #ff0000;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    .scrollable-wrapper {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 50%; /* Height of the visible portion */
+      overflow: hidden;
+      transition: height 0.3s ease;
+      padding: 22px;
+      z-index: 1;
+      border-radius: 20px 20px 0px 0px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+    }
+
+    .scrollable-div {
+      width: 100%;
+      height: 100%; /* Total height of the content */
+    }
+
+    .login-form {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      margin-top: 14px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Media Query for screens smaller than 600px */
+    @media (max-width: 600px) {
+      .scrollable-wrapper {
+        pointer-events: auto; /* Enable pointer events */
+      }
+
+      .scrollable-wrapper.clicked {
+        pointer-events: none; /* Disable pointer events */
+      }
+    }
+
+    /* Media Query for screens larger than 600px */
+    @media (min-width: 601px) {
+      .scrollable-wrapper {
+        pointer-events: none; /* Disable pointer events */
+      }
+
+      .scrollable-wrapper.clicked {
+        pointer-events: auto; /* Enable pointer events */
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="scrollable-wrapper" id="scrollableWrapper" onclick="toggleHeight()" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()">
+    <div class="scrollable-div" id="scrollableDiv">
+      <div class="login-form" ontouchstart="stopPropagation(event)">
+        <!-- Your login form content goes here -->
+        <h2>Login Form</h2>
+        <form action="">
+          <label for="username">Username:</label><br>
+          <input type="text" id="username" name="username"><br>
+          <label for="password">Password:</label><br>
+          <input type="password" id="password" name="password"><br><br>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="menu-btn" onclick="toggleLeftMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="menu" id="menu">
+    <!-- Your menu content goes here -->
+    <span class="close-btn" onclick="toggleLeftMenu()">&#10006;</span>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="right-menu-btn" onclick="toggleRightMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="right-menu" id="right-menu">
+    <!-- Your menu content goes here -->
+    <span class="close-btn" onclick="toggleRightMenu()">&#10006;</span>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+    function toggleLeftMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("show-menu");
+    }
+
+    function toggleRightMenu() {
+      const rightMenu = document.getElementById("right-menu");
+      rightMenu.classList.toggle("right-show-menu");
+    }
+  </script>
+
+<div class="bottom-menu-btn" onclick="toggleMenu()">
+  <i class="fas fa-boot"></i>
+</div>
+
+<div class="bottom-left-menu-btn" onclick="recenterMap()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div class="bottom-menu" id="bottom-menu">
+  <!-- Your menu content goes here -->
+  <span class="close-btn" onclick="toggleMenu()">&#10006;</span>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+
+</body>
+</html>

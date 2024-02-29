@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ride Price Calculator</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    .container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"] {
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      width: 300px;
+      height: 100px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      text-align: center;
+    }
+
+    #yesButton {
+      background-color: rgb(243, 51, 51);
+      color: white;
+      border: 2px solid #ffc0c0;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    
+#okayButton {
+        background-color: rgb(60, 60, 60);
+      color: white;
+      border: 2px solid #171717;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+    <div id="alert" class="modal">
+        <p>Are you still there?</p>
+        <button id="yesButton">Yes</button>
+      </div>
+      <div id="timeoutAlert" class="modal">
+        <p>Your Errand ended at <span id="endTime"></span></p>
+        <button id="okayButton">Okay</button>
+      </div>
+    
+<div class="container">
+    <h2>Ride Price Calculator</h2>
+    <form id="priceForm">
+        <label for="minutes">Enter time in minutes:</label><br>
+        <input type="number" id="minutes" name="minutes" min="1" required><br>
+        <label for="kilometers">Enter distance in kilometers:</label><br>
+        <input type="number" id="kilometers" name="kilometers" min="1" required><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script>
+    const priceForm = document.getElementById('priceForm');
+    const resultDiv = document.getElementById('result');
+
+    priceForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const minutes = parseInt(document.getElementById('minutes').value);
+        const kilometers = parseInt(document.getElementById('kilometers').value);
+        const petrolPricePerLiter = 23.24; // Petrol price in Rand
+        const petrolConsumptionPer100Km = 5; // Liters of petrol consumed per 100 km
+        const timeWithoutTrafficPerKm = 2; // Time in minutes without traffic per kilometer
+
+        // Calculate total petrol cost for the given distance
+        const totalPetrolCost = (petrolPricePerLiter / 100) * (petrolConsumptionPer100Km * kilometers);
+
+        // Calculate total time without traffic for the given distance
+        const totalTimeWithoutTraffic = timeWithoutTrafficPerKm * kilometers;
+
+        // Calculate combined fee
+        const combinedFee = minutes + kilometers + totalTimeWithoutTraffic;
+
+        // Display the result
+        resultDiv.textContent = `Combined fee: R${combinedFee.toFixed(2)}`;
+    });
+</script>
+<script>
+    window.onload = function() {
+      const alertDiv = document.getElementById('alert');
+      const timeoutAlertDiv = document.getElementById('timeoutAlert');
+      const yesButton = document.getElementById('yesButton');
+      const okayButton = document.getElementById('okayButton');
+
+      let timeout; // Variable to store the timeout ID
+
+      function showAlert() {
+        alertDiv.style.display = 'block';
+        timeout = setTimeout(showTimeoutAlert, 20000); // Show timeout alert after 20 seconds of inactivity
+      }
+
+      function hideAlert() {
+        alertDiv.style.display = 'none';
+        clearTimeout(timeout); // Clear the timeout
+      }
+
+      function showTimeoutAlert() {
+        const currentTime = new Date().toLocaleTimeString();
+        timeoutAlertDiv.style.display = 'block';
+        document.getElementById('endTime').textContent = currentTime;
+      }
+
+      function hideTimeoutAlert() {
+        timeoutAlertDiv.style.display = 'none';
+      }
+
+      yesButton.onclick = function() {
+        hideAlert();
+        clearTimeout(timeout); // Clear the timeout
+      }
+
+      okayButton.onclick = hideTimeoutAlert;
+
+      showAlert();
+      setInterval(showAlert, 30000); // Call showAlert every 30 seconds
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/* Main styles */
+main {
+    padding: 20px;
+}
+
+/* Landing page links styles */
+.landing-page-links {
+    text-align: center;
+}
+
+.landing-page-links h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.landing-page-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.landing-page-links li {
+    margin-bottom: 10px;
+}
+
+.landing-page-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.landing-page-links a:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}

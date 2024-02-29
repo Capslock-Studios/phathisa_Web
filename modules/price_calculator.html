@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ride Price Calculator</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    .container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"] {
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Ride Price Calculator</h2>
+    <form id="priceForm">
+        <label for="minutes">Enter time in minutes:</label><br>
+        <input type="number" id="minutes" name="minutes" min="1" required><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script>
+    const priceForm = document.getElementById('priceForm');
+    const resultDiv = document.getElementById('result');
+
+    priceForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const minutes = parseInt(document.getElementById('minutes').value);
+        if (minutes >= 6) {
+            const initialPrice = 20;
+            const additionalMinutes = minutes - 6;
+            const additionalPrice = (additionalMinutes / 6) * initialPrice;
+            const totalPrice = initialPrice + additionalPrice;
+            resultDiv.textContent = `Price for ${minutes} minutes: R${totalPrice.toFixed(2)}`;
+        } else {
+            resultDiv.textContent = "Minimum ride duration is 6 minutes.";
+        }
+    });
+</script>
+
+</body>
+</html>

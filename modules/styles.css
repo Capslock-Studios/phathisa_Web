@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* White background */
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  background-color: #333333; /* Dark background for the header and footer */
+  color: #ffffff; /* White text color */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000; /* Ensures the header and footer stay above other content */
+}
+
+.logo img {
+  max-height: 40px; /* Adjust the height as needed */
+}
+
+.hamburger-menu {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff; /* White background for hamburger menu */
+  cursor: pointer;
+  /* You can style your hamburger menu icon here */
+}
+
+footer {
+  bottom: 0;
+  transition: transform 0.5s ease;
+  transform: translateY(100%);
+}
+
+footer.raised {
+  background-color: #333333; /* Same background color as header when raised */
+  transform: translateY(0);
+}
+
+footer nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  padding: 10px;
+}

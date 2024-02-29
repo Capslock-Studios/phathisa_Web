@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Business Erranda | Phathisa</title>
+</head>
+<body>
+  <!-- Google Map Embed API -->
+  <div class="map-container">
+    <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.1879007781664!2d28.031928115029536!3d-26.20410298343092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68c4f8d261%3A0x1eae9e6eddb3c00!2sJohannesburg%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1645225718996!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" gestureHandling="greedy"></iframe>
+  </div>
+  <!-- My DIv --
+  <div id="mydiv">
+    <div id="mydivheader">Click </div>
+  </div>
+-->
+  <!-- Rest of your HTML content -->
+  
+
+
+    <div class="scrollable-wrapper" id="scrollableWrapper" onclick="toggleHeight()" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()">
+      <div class="scrollable-div" id="scrollableDiv">
+          
+        <div class="sipper-heading">Business</div>
+          <div class="container">
+            <button class="button" id="businessButton">Business</button>
+            <button class="button" id="healthButton">Health</button>
+            <button class="button" id="parkingButton">Parking</button>
+            <button class="button" id="deliveryButton">Delivery</button>
+            <button class="button" id="educationButton">Education</button>
+          </div>
+              <div class="login-form" ontouchstart="stopPropagation(event)">
+                <div class="m-containe">
+                  
+                
+                <!-- Your login form content goes here -->
+
+                <div id="div1" class="req-container">
+                  <div class="dropdown" onclick="toggleDropdown(3)">
+                    <button class="dropdown-button">Delivery</button>
+                    <div id="dropdown-content-3" class="dropdown-content">
+                      <p class="dropdown-description">Request a delivery</p>
+                      <form>
+                        <input class="form-input" type="text" placeholder="Pick Up Location">
+                        <input class="form-input" type="text" placeholder="Drop-Off Location">
+                        <button class="add-button">Special Notes</button>
+                        <button class="form-button" type="submit">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+         
+
+                </div>
+              </div>
+        </div>
+        <div class="scrollable-div" id="scrollableDiv">
+         
+             
+          <div class="dot-container">
+          </div>
+        </div>
+        <div class="scrollable-div" id="scrollableDiv">
+         
+            <!-- Your login form content goes here -->
+            <h2>Errand Run</h2>
+            <form action="">
+              <label for="username">Start Location</label><br>
+              <input type="text" id="username" name="username"><br>
+              <label for="password">End location</label><br>
+              <input type="password" id="password" name="password"><br><br>
+              <input type="submit" value="CONFIRM">
+            </form>
+      <div class="dot-container">
+      </div>
+    </div>
+      </div>
+    <div class="menu-btn" onclick="toggleLeftMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="menu">
+      <!-- Your menu content goes here -->
+      <span class="close-btn" onclick="toggleLeftMenu()">&#10006;</span>
+      <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Wallet</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </div>
+    <div class="right-menu-btn" onclick="toggleRightMenu()">
+      <i class="fas fa-bell" alt="notifications"></i>
+      
+    </div>
+     <div class="right-menu" id="right-menu">
+      <!-- Your menu content goes here -->
+      <span class="close-btn" onclick="toggleRightMenu()">&#10006;</span>
+      <ul>
+        <li><a href="#">Notifications</a></li>
+        <li><a>you are not logged in</a></li>
+      </ul>
+    </div>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      function toggleLeftMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("show-menu");
+      }
+  
+      function toggleRightMenu() {
+        const rightMenu = document.getElementById("right-menu");
+        rightMenu.classList.toggle("right-show-menu");
+      }
+    </script>
+  <div class="bottom-menu-btn" onclick="toggleMenu()">
+    <img src="../images/counter.gif" alt="counter">
+
+  </div>
+  <div class="bottom-left-menu-btn" onclick="recenterMap()">
+    <img src="../images/campass.gif" alt="Compass GIF"> <!-- Compass GIF -->
+  </div>
+    <div class="bottom-menu" id="bottom-menu">
+    <!-- Your menu content goes here -->
+    <span class="close-btn" onclick="toggleMenu()">&#10006;</span>
+    <ul>
+      <li><a href="#">Current Services</a></li>
+      <li><a href="#">Schedualed services</a></li>
+    </ul>
+  </div>
+  <script>
+    // Your JavaScript code
+  </script>
+  <script>
+    function toggleMenu() {
+      const bottom_menu = document.getElementById("bottom-menu");
+      bottom_menu.classList.toggle("bottom-show-menu");
+    }
+  </script>
+  
+  <script>
+    let startY;
+  
+    function handleTouchStart(event) {
+      if (window.innerWidth <= 600) {
+        startY = event.touches[0].clientY;
+      }
+    }
+  
+    function handleTouchMove(event) {
+      if (window.innerWidth <= 600) {
+        const scrollableWrapper = document.getElementById('scrollableWrapper');
+        if (event.touches[0].clientY < startY) {
+          // Swiping up
+          scrollableWrapper.style.height = '92%';
+        } else if (event.touches[0].clientY > startY) {
+          // Swiping down
+          scrollableWrapper.style.height = '85px';
+        }
+      }
+    }
+  
+  
+    function handleTouchEnd() {
+      startY = null;
+    }
+  
+    function toggleHeight() {
+      if (window.innerWidth > 600) {
+        const scrollableWrapper = document.getElementById('scrollableWrapper');
+        if (scrollableWrapper.classList.contains('clicked')) {
+          scrollableWrapper.classList.remove('clicked');
+        } else {
+          scrollableWrapper.classList.add('clicked');
+        }
+      }
+    }
+  
+    function stopPropagation(event) {
+      event.stopPropagation();
+    }
+  </script>
+  
+  <script>
+    // Your JavaScript code
+
+    // Function to make an element draggable
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        // If a header is present, use it to move the DIV
+        document.getElementById(elmnt.id + "header").ontouchstart = dragTouchStart;
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        // Otherwise, move the DIV from anywhere inside it
+        elmnt.ontouchstart = dragTouchStart;
+        elmnt.onmousedown = dragMouseDown;
+      }
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // Get the mouse cursor position at startup
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // Call a function whenever the cursor moves
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // Calculate the new cursor position
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // Set the element's new position
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+
+      function closeDragElement() {
+        // Stop moving when the mouse button is released
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+
+      function dragTouchStart(e) {
+        var touch = e.targetTouches[0];
+        var moveOffsetX = touch.clientX - parseInt(elmnt.style.left);
+        var moveOffsetY = touch.clientY - parseInt(elmnt.style.top);
+
+        document.ontouchmove = function(e) {
+          var touch = e.targetTouches[0];
+          elmnt.style.left = (touch.clientX - moveOffsetX) + "px";
+          elmnt.style.top = (touch.clientY - moveOffsetY) + "px";
+        };
+      }
+    }
+
+    // Call the dragElement function with the desired element
+    dragElement(document.getElementById("mydiv"));
+  </script>
+     <script>
+      function scrollToBox(index) {
+        const boxContainer = document.querySelector('.box-container');
+        const boxes = document.querySelectorAll('.box');
+        const boxWidth = boxes[0].offsetWidth;
+        boxContainer.scrollLeft = index * boxWidth;
+        setActiveDot(index);
+      }
+  
+      function setActiveDot(index) {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    </script>
+    <script>
+      function toggleDropdown(index) {
+        var dropdownContent = document.getElementById('dropdown-content-' + index);
+        dropdownContent.classList.toggle('active');
+        // Close other dropdowns
+        var dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(function(dropdown) {
+          if (dropdown.id !== 'dropdown-content-' + index) {
+            dropdown.classList.remove('active');
+          }
+        });
+      }
+    </script>
+    <script>
+      function showDiv(divNumber) {
+        var allDivs = document.querySelectorAll('.div-content');
+        allDivs.forEach(function(div) {
+          div.classList.add('hidden');
+        });
+        var selectedDiv = document.getElementById('div' + divNumber);
+        selectedDiv.classList.remove('hidden');
+      }
+    
+      function scrollToNext() {
+        var visibleDiv = document.querySelector('.div-content:not(.hidden)');
+        var nextDiv = visibleDiv.nextElementSibling;
+        if (nextDiv) {
+          nextDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+      }
+    </script>
+
+
+<script>
+  // Get references to all buttons
+  var businessButton = document.getElementById("businessButton");
+  var homeButton = document.getElementById("homeButton");
+  var aboutButton = document.getElementById("aboutButton");
+  var servicesButton = document.getElementById("servicesButton");
+  var contactButton = document.getElementById("contactButton");
+
+  // Add event listeners to each button
+  businessButton.addEventListener("click", function() {
+    window.location.href = "./business.html";
+  });
+
+  healthButton.addEventListener("click", function() {
+    window.location.href = "./health.html";
+  });
+
+  parkingButton.addEventListener("click", function() {
+    window.location.href = "./parking.html";
+  });
+
+  deliveryButton.addEventListener("click", function() {
+    window.location.href = "./delivery.html";
+  });
+
+  educationButton.addEventListener("click", function() {
+    window.location.href = "./education.html";
+  });
+
+</script>
+
+
+</body>
+</html>

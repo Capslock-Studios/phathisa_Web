@@ -1,0 +1,613 @@
+
+/*-------Start of styles2-----------*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Rest of your CSS styles */
+
+.map-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    opacity: 80%;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #1168af;
+  }
+
+  .menu-btn i {
+    font-size: 24px;
+    color: #2980b9;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden */
+    width: 300px;
+    height: 100%;
+    background-color: #333333;
+    transition: left 0.3s ease;
+    z-index: 5;
+  }
+
+  .menu.show-menu {
+    left: 0;
+  }
+
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #555555;
+  }
+
+  .menu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .menu ul li a:hover {
+    color: #ff0000;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .right-menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 80%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 0;
+    border: 1px solid #1a93f6;
+  }
+
+  .right-menu-btn i {
+    
+    font-size: 24px;
+    color: #2980b9;
+  }
+
+
+  .right-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially hidden */
+    width: 300px;
+    height: 100%;
+    background-color: #333333;
+    transition: right 0.3s ease; /* Transition the right property */
+    color: green;
+    z-index: 6;
+  }
+
+  .right-menu.right-show-menu {
+    right: 0; /* Slide in from the right */
+  }
+
+  .right-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .right-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #555555;
+  }
+
+  .right-menu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .right-menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .right-menu ul li a:hover {
+    color: #ff0000;
+  }
+
+  .right-menu .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .bottom-menu-btn {
+    position: fixed;
+    bottom: 25%;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #ffffff ;
+    opacity: 80%;
+    
+  }
+
+  .bottom-left-menu-btn {
+    position: fixed;
+    bottom: 25%;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #ffffff ;
+    opacity: 80%;
+  }
+
+  .bottom-menu-btn i {
+    font-size: 24px;
+  }
+
+  .bottom-menu-btn img {
+display: block;
+margin: auto;
+max-width: 100%;
+max-height: 100%;
+border-radius: 50%;
+}
+
+.bottom-left-menu-btn img {
+display: block;
+margin: auto;
+max-width: 100%;
+max-height: 100%;
+border-radius: 50%;
+}
+
+
+  .bottom-menu {
+    position: fixed;
+    bottom: -100%; /* Initially hidden */
+    left: 0;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background-color: #333333;
+    transition: bottom 0.3s ease;
+  }
+
+  .bottom-menu.bottom-show-menu {
+    bottom: 0;
+  }
+
+  .bottom-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bottom-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #555555;
+  }
+
+  .bottom-menu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .bottom-menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .bottom-menu ul li a:hover {
+    color: #ff0000;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  .scrollable-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 50%; /* Height of the visible portion */
+    overflow: hidden;
+    transition: height 0.3s ease;
+    padding: 22px;
+    z-index: 1;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added drop shadow */
+  }
+
+  .scrollable-div {
+    width: 100%;
+    height: 100%; /* Total height of the content */
+  }
+
+  .login-form {
+    width: 300px;
+    margin: auto;
+    padding-top: 1ss50px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  /* Media Query for screens smaller than 600px */
+  @media (max-width: 600px) {
+    .scrollable-wrapper {
+      pointer-events: auto; /* Enable pointer events */
+    }
+
+    .scrollable-wrapper.clicked {
+      pointer-events: none; /* Disable pointer events */
+    }
+  }
+
+  /* Media Query for screens larger than 600px */
+  @media (min-width: 601px) {
+    .scrollable-wrapper {
+      pointer-events: none; /* Disable pointer events */
+    }
+
+    .scrollable-wrapper.clicked {
+      pointer-events: auto; /* Enable pointer events */
+    }
+  }
+
+  #mydiv {
+position: absolute;
+height: 60px;
+width: 60px;
+border-radius: 50%;
+z-index: 9;
+background-color: #f1f1f1;
+text-align: center;
+border: 1px solid #d3d3d3;
+
+
+
+}
+
+#mydivheader {
+padding: 10px;
+cursor: move;
+z-index: 10;
+color: #fff;
+}
+
+
+.container {
+width: 100%; /* Set container width to 100% */
+max-width: 500px; /* Limit maximum width to 500px */
+height: 50px;
+overflow-x: auto; /* Enable horizontal scrollbar if content overflows */
+white-space: nowrap; /* Prevent buttons from wrapping to the next line */
+border-top: 1px solid #ccc; /* Border for visualization */
+padding: 5px; /* Add some padding */
+display: flex; /* Use flexbox for responsive layout */
+float: right;
+}
+
+.button {
+width: calc(100% / 5 - 10px); /* Calculate button width dynamically */
+max-width: 70px; /* Set maximum button width */
+height: 40px;
+margin-right: 10px; /* Add some space between buttons */
+background-color: #3498db;
+color: #ffffff;
+border: none;
+border-radius: 20px;
+font-size: 11px;
+cursor: pointer;
+}
+
+/* Adjust button size for smaller screens */
+@media screen and (max-width: 500px) {
+.button {
+  width: calc(70% / 5 - 4px); /* Adjust button width for smaller container */
+  max-width: 80px; /* Remove maximum width constraint */
+}
+}
+
+/* Adjust button size for even smaller screens */
+@media screen and (max-width: 400px) {
+.button {
+  width: calc(100% / 5 - 10px); /* Adjust button width for even smaller container */
+}
+}
+
+/*-------End of styles1-----------*/
+
+
+/*-------Start of styles2-----------*/
+  .req-container {
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .dropdown {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .dropdown-button {
+    width: 100%;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dropdown-button:hover {
+    background-color: #2980b9;
+  }
+  .dropdown-content {
+    display: none;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .dropdown-content.active {
+    display: block;
+  }
+  .dropdown-description {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #666666;
+  }
+  .form-input {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .form-button {
+    width: 100%;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .form-button:hover {
+    background-color: #2980b9;
+  }
+
+  .add-button {
+    width: 90%;
+    background-color: #db3437;
+    border: none;
+    border-radius: 22px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+  }
+  .add-button:hover {
+    background-color: #b92929;
+  }
+/*-------End of styles2-----------*/
+
+/*-------Start of styles3-----------*/
+  
+.sipper-container {
+  width: 80%;
+  max-width: 600px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sipper-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.box-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.box {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 250px;
+  margin-right: 10px;
+  background-color: #dddddd;
+  border-radius: 10px;
+  scroll-snap-align: start;
+}
+
+.dot-container {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 32px;
+  height: 32px;
+  background-color: #333;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.dot.active {
+  background-color: #666;
+}
+
+
+
+.m-container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+position: relative;
+}
+.hidden {
+display: none;
+}
+
+.button-container {
+width: 100px;
+position: fixed;
+top: 50%;
+right: 10px;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+z-index: 1;
+}
+.show-button {
+background-color: #2ecc71;
+color: #ffffff;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+.scroll-arrow {
+position: absolute;
+right: 0;
+top: 50%;
+transform: translateY(-50%);
+cursor: pointer;
+z-index: 1;
+}
+
+/*-----------end of style 3*/
+
+
+
+/* Additional CSS for demo purposes */
+.scrollable-wrapper {
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+.scrollable-content {
+  overflow-y: auto;
+}

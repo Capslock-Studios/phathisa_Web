@@ -1,0 +1,100 @@
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        #header {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+        #my-logo {
+            float: left;
+            margin-right: 10px;
+        }
+        #hamburger {
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        #hamburger-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #hamburger-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #hamburger-menu li {
+            padding: 5px 0;
+        }
+        #hamburger-menu li:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        #controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #recenter {
+            border-radius: 22px;
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #route-form {
+            margin-top: 10px;
+        }
+        #route-form input[type="text"] {
+            width: calc(100% - 20px);
+            margin-bottom: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #route-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media only screen and (min-width: 768px) {
+            #controls {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    
