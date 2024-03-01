@@ -1,492 +1,656 @@
-<!DOCTYPE html>
-<html lang="en">
-<!----
-  Errors:
-  1. input forms don't work
-  2. "use two gingers to move the map"
-  3. must click on the (x) to close menu
-  4. swipping down reloads page
-  5. wrong menu iframe
-  ---->
-  <head>
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phathisa Welcome page</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <title>Phathisa Errand Runner  | App Landing Page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
+    
+    <!-- Bootstrap 3.3.2 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/js/rs-plugin/css/settings.css">
 
-  </head>
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style-type: none;
-  text-decoration: none;
-}
+    <link rel="stylesheet" href="assets/css/styles.css">
 
-:root {
-  --primary: #ec994b;
-  --white: #ffffff;
-  --bg: #f5f5f5;
-}
 
-html {
-  font-size: 62.5%;
-  font-family: "Montserrat", sans-serif;
-  scroll-behavior: smooth;
-  overflow: hidden;
-}
+    <script type="text/javascript" src="assets/js/modernizr.custom.32033.js"></script>
 
-@media (min-width: 1440px) {
-  html {
-    zoom: 1.5;
-  }
-}
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 
-@media (min-width: 2560px) {
-  html {
-    zoom: 1.7;
-  }
-}
-
-@media (min-width: 3860px) {
-  html {
-    zoom: 2.5;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 1.3rem;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background: #797979;
-  transition: all 0.5s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #222224;
-}
-
-::-webkit-scrollbar-track {
-  background: #f9f9f9;
-}
-
-body {
-  font-size: 1.6rem;
-  background: var(--bg);
-}
-
-.container {
-  max-width: 124rem;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.section-heading {
-  font-size: 3rem;
-  color: var(--primary);
-  padding: 2rem 0;
-}
-
-#tranding {
-  padding: 4rem 0;
-}
-
-@media (max-width:1440px) {
-  #tranding {
-    padding: 7rem 0;
-  }
-}
-
-#tranding .tranding-slider {
-  height: 52rem;
-  padding: 2rem 0;
-  position: relative;
-}
-
-@media (max-width:500px) {
-  #tranding .tranding-slider {
-    height: 45rem;
-  }
-}
-
-.tranding-slide {
-  width: 37rem;
-  height: 42rem;
-  position: relative;
-}
-
-@media (max-width:500px) {
-  .tranding-slide {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-  .tranding-slide .tranding-slide-img img {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-}
-
-.tranding-slide .tranding-slide-img img {
-  width: 37rem;
-  height: 42rem;
-  border-radius: 2rem;
-  object-fit: cover;
-}
-
-.tranding-slide .tranding-slide-content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.tranding-slide-content .food-price {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  color: var(--white);
-}
-
-.tranding-slide-content .tranding-slide-content-bottom {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  color: var(--white);
-}
-
-.food-rating {
-  padding-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.rating ion-icon {
-  color: var(--primary);
-}
-
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right {
-  display: none;
-}
-
-.tranding-slider-control {
-  position: relative;
-  bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tranding-slider-control .swiper-button-next {
-  left: 58% !important;
-  transform: translateX(-58%) !important;
-}
-
-@media (max-width:990px) {
-  .tranding-slider-control .swiper-button-next {
-    left: 70% !important;
-    transform: translateX(-70%) !important;
-  }
-}
-
-@media (max-width:450px) {
-  .tranding-slider-control .swiper-button-next {
-    left: 80% !important;
-    transform: translateX(-80%) !important;
-  }
-}
-
-@media (max-width:990px) {
-  .tranding-slider-control .swiper-button-prev {
-    left: 30% !important;
-    transform: translateX(-30%) !important;
-  }
-}
-
-@media (max-width:450px) {
-  .tranding-slider-control .swiper-button-prev {
-    left: 20% !important;
-    transform: translateX(-20%) !important;
-  }
-}
-
-.tranding-slider-control .slider-arrow {
-  background: var(--white);
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  left: 42%;
-  transform: translateX(-42%);
-  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
-}
-
-.tranding-slider-control .slider-arrow ion-icon {
-  font-size: 2rem;
-  color: #222224;
-}
-
-.tranding-slider-control .slider-arrow::after {
-  content: '';
-}
-
-.tranding-slider-control .swiper-pagination {
-  position: relative;
-  width: 15rem;
-  bottom: 1rem;
-}
-
-.tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
-  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
-}
-
-.tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
-  background: var(--primary);
-}
-
-.head-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .rounded-div {
-    width: 300px;
-    height: 50px;
-    border-radius: 50px;
-    background-color: #3498db; /* Example background color */
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .rounded-div img {
-    width: 45px;
-    height: 45px;
-    border: 1px solid black;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-
-  .caption {
-    font-size: 16px;
-    color: #ffffff;
-  }
-
-</style>
-  <body>
-    <section id="tranding">
-      <div class="head-container">
-        <a href="./phathisa_Web/index.html"><div class="rounded-div">
-          <img src="./images/logo phathisa.jpg" alt="Image">
-          <span class="caption">read more about | <h3>Phathisa</h3></span>
+<body>
+    
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="assets/img/freeze/logo.png" class="animated fadeInDown" alt="">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
         </div>
-        </a>
-      </div>
-      <div class="container">
-        <p class="text-center" style="margin: 5px; color: #686868;">Select a service you need help with</p>
-        <h3 class="text-center section-subheading"> SERVICES</h3>
-      </div>
-      <div class="container">
-        <div class="swiper tranding-slider">
-          <div class="swiper-wrapper">
-            <!-- Slide-start -->
-            <div class="swiper-slide tranding-slide">
-              <div class="tranding-slide-img">
-                <img src="images/parking.png" alt="Tranding">
-              </div>
-              <a href="./services/parking.html">
-              <div class="tranding-slide-content">
-                <h1 class="food-price">Parking</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">
-                    Parking Attendents
-                  </h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
+    </div>
+   
+    <header>
+        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="../index.html">
+                            <img  src="assets/img/Phathisa logo.png" alt="" class="logo">
+                        </a>
                     </div>
-                  </h3>
-                  <h6>More info about </h6>
-                </div>
-              </div>
-              </a>
-            </div>
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-            <div class="swiper-slide tranding-slide">
-              <div class="tranding-slide-img">
-                <img src="images/teacher.png" alt="Tranding">
-              </div>
-              <a href="./services/education.html">
-              <div class="tranding-slide-content">
-                <h1 class="food-price">Education</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">
-                    Educational Institutions
-                  </h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-                  </h3>
-                </div>
-              </div>
-              </a>
-            </div>
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-            <div class="swiper-slide tranding-slide">
-              <div class="tranding-slide-img">
-                <img src="images/business.png" alt="Tranding">
-              </div>
-              <a href="./services/business.html">
-              <div class="tranding-slide-content">
-                <h1 class="food-price">Business</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">
-                    Shoppers
-                  </h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-                  </h3>
-                </div>
-              </div>
-            </a>
-            </div>
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-            <div class="swiper-slide tranding-slide">
-              <div class="tranding-slide-img">
-                <img src="images/health.png" alt="Tranding">
-              </div>
-              <a href="./services/health.html">
-              <div class="tranding-slide-content">
-                <h1 class="food-price">Medical</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">
-                    Health care
-                  </h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-                  </h3>
-                </div>
-              </div>
-              </a>
-            </div>
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-            <div class="swiper-slide tranding-slide">
-              <div class="tranding-slide-img">
-                <img src="images/delivery.png" alt="Tranding">
-              </div>
-              <a href="./services/delivery.html">
-              <div class="tranding-slide-content">
-                <h1 class="food-price">Delivery</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">
-                    Delivery Runner
-                  </h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-                  </h3>
-                </div>
-              </div>
-              </a>
-            </div>
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-           
-            <!-- Slide-end -->
-            <!-- Slide-start -->
-           
-            <!-- Slide-end -->
-          </div>
 
-          <div class="tranding-slider-control">
-            <div class="swiper-button-prev slider-arrow">
-              <ion-icon name="arrow-back-outline"></ion-icon>
-            </div>
-            <div class="swiper-button-next slider-arrow">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">about</a>
+                            </li>
+                            <li><a href="#features">features</a>
+                            </li>
+                            <li><a href="#reviews">reviews</a>
+                            </li>
+                            <li><a href="#screens">screens</a>
+                            </li>
+                            <li><a href="#demo">demo</a>
+                            </li>
+                            <li><a class="getApp" href="../services/home.html">test app</a>
+                            </li>
+                            <li><a href="#support">support</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+        </nav>
+
+        
+        <!--RevSlider-->
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfl fadeout hidden-xs"
+                            data-x="left"
+                            data-y="bottom"
+                            data-hoffset="30"
+                            data-voffset="0"
+                            data-speed="500"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/freeze/Slides/hand-freeze.png" alt="">
+                        </div>
+
+                        <div class="tp-caption lfl fadeout visible-xs"
+                            data-x="left"
+                            data-y="center"
+                            data-hoffset="700"
+                            data-voffset="0"
+                            data-speed="500"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/freeze/iphone-freeze.png" alt="">
+                        </div>
+
+                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
+                            Phathisa Errand
+                        </div>
+                        <div class="tp-caption large_white_light sfr" data-x="770" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                            
+                        </div>
+                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                            Runner
+                        </div>
+
+                        <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
+                            <a href="#about" class="btn btn-primary inverse btn-lg">LEARN MORE</a>
+                        </div>
+                        <div class="tp-caption sfr hidden-xs" data-x="730" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
+                            <a href="../services/home.html" class="btn btn-default btn-lg">TEST APP</a>
+                        </div>
+
+                    </li>
+                    <!-- SLIDE 2 -->
+                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfb fadeout hidden-xs"
+                            data-x="center"
+                            data-y="bottom"
+                            data-hoffset="0"
+                            data-voffset="0"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/freeze/Slides/freeze-lide2.png" alt="">
+                        </div>
+
+                        
+                        <div class="tp-caption large_white_light sft" data-x="center" data-y="250" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            Just gotta love it! <i class="fa fa-heart"></i>
+                        </div>
+                        
+                        
+                    </li>
+
+                    <!-- SLIDE 3 -->
+                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption customin customout hidden-xs"
+                            data-x="right"
+                            data-y="center"
+                            data-hoffset="0"
+                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-voffset="50"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/freeze/Slides/family-freeze.png" alt="">
+                        </div>
+
+                        <div class="tp-caption customin customout visible-xs"
+                            data-x="center"
+                            data-y="center"
+                            data-hoffset="0"
+                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-voffset="0"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="assets/img/freeze/Slides/family-freeze.png" alt="">
+                        </div>
+
+                        <div class="tp-caption lfb visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="400" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
+                            <a href="#" class="btn btn-primary inverse btn-lg">Try Us</a>
+                        </div>
+
+                        
+                        <div class="tp-caption mediumlarge_light_white sfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="-50" data-speed="1000" data-start="1000" data-easing="Power4.easeOut">
+                           Powerful Responsive
+                        </div>
+                        <div class="tp-caption mediumlarge_light_white sft hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
+                           App Landing Page
+                        </div>
+                        <div class="tp-caption small_light_white sfb hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="80" data-speed="1000" data-start="1600" data-easing="Power4.easeOut">
+                           <p>Nulla pretium libero interdum, tempus lorem non, rutrum diam. <br> Quisque pellentesque diam sed pulvinar lobortis. Vestibulum ante <br>ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+                        </div>
+
+                        <div class="tp-caption lfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="160" data-speed="1000" data-start="1800" data-easing="Power4.easeOut">
+                            <a href="#" class="btn btn-primary inverse btn-lg">Purchase</a>
+                        </div>
+                        
+                        
+                    </li>
+                    
+                </ul>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+
+    </header>
+
+
+    <div class="wrapper">
+
+        
+
+        <section id="about">
+            <div class="container">
+                
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>About Us</h1>
+                    <div class="divider"></div>
+                    <p>Phathisa Errand Runners</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i class="fa fa-download fa-2x"></i>
+                            <h3>Errand Runners</h3>
+                            <p>Need help? request an errand runner to help you. from as little as R20 you can have
+                                someone pick up your grocerie. ts & Cs apply.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa fa-mobile fa-2x"></i>
+                            <h3>Make An Income</h3>
+                            <p>Register to be an errand runner and get paid for helping people weekly, if you have a car you can 
+                                 lease it out to errand runners for a weekly income.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h3>Help those in hospital</h3>
+                            <p>Buy a Phathisa ticket for your friends or loved ones and they can use you the gifted ticket to 
+                                book a much needed errand runner</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect1">
+                            <i class="fa fa-sliders fa-2x"></i>
+                            <h3>Investment Opportunity</h3>
+                            <p>We have multiple Investment Opportunities from leasing out your car to an errand runner to 
+                                buying ad space through pamphet boys.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Features</h1>
+                    <div class="divider"></div>
+                    <p>Learn more about our feature packed App</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect1">
+                        <div class="media text-right feature">
+                            <a class="pull-right" href="#">
+                                <i class="fa fa-cogs fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">User Settings</h3>
+                                User get to chose wearther to be an errand runner or request an errand.
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right" href="#">
+                                <i class="fa fa-comments fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Messages Inbox</h3>
+                                With our secure in-App communication channels you can rest assured that you conversation is private.
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right" href="#">
+                                <i class="fa fa-users fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Live mode</h3>
+                               In live mode you can see on the map other people who are using this App
+                            </div>
+                        </div>
+                        <div class="media text-right feature">
+                            <a class="pull-right" href="#">
+                                <i class="fa fa-calendar fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Schedual errand</h3>
+                                For those who have Dr's appointments, you can schedual your date with us and we'll have an errand runner 
+                                ready to go for you in no time.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4" >
+                        <img src="assets/img/freeze/iphone-freeze.png" class="img-responsive scrollpoint sp-effect5" alt="">
+                    </div>
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
+                        <div class="media feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-map-marker fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Track your Errand runner</h3>
+                                With our live location function you and your errand runner and keep track of each other during and errand
+                            </div>
+                        </div>
+                        <div class="media feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-compass fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Intuitive Gift Vouchers</h3>
+                                With our gift Vouchers system there is no need to cash transactions between the errand runner and you. Just buy a ticket
+                                and they'll redeem it.
+                            </div>
+                        </div>
+                        <div class="media feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-picture-o fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Investment Opportunities</h3>
+                                As our company is still young and yet it's making headway in the unders saturated market of Errand Runners we are a 
+                                good Investment Opportunity.
+                            </div>
+                        </div>
+                        <div class="media active feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">And much more!</h3>
+                                We keep developing and making the App ever batter for our customer setifection
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <div class="container">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                    <h1>Reviews</h1>
+                    <div class="divider"></div>
+                    <p>Read What People Are Saying About Us</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-push-1 scrollpoint sp-effect3">
+                        <div class="review-filtering">
+                           
+                            <div class="review">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="review-person">
+                                            <img src="./assets/img/gift.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="review-comment">
+                                            <h3>“They are such a convinient service. You just give them a call or text and that are here with in their ETA.
+                                            They brough my food and when shopping for other items on the way just for R20.”</h3>
+                                            <p>
+                                                - Phetogo Kgosierileng  (Gift)
+                                                <span>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star-half-o fa-lg"></i>
+                                                    <i class="fa fa-star-o fa-lg"></i>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review rollitin">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="review-person">
+                                            <img src="./assets/img/millisoa.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="review-comment">
+                                            <h3>“Phathisa helped me to have a great driving experience, from the punctuality of the driver, who was very patient, very respectful and helped me get to where I needed 
+                                                to get at the time I needed to get there. The 30 min errands is money well spent, it was a 10 out of 10 experience.”</h3>
+                                            <p>
+                                                - Milliosa Mavie
+                                                <span>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star-o fa-lg"></i>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review rollitin">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="review-person">
+                                            <img src="./assets/img/boni.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="review-comment">
+                                            <h3>“I had a very demanding customer who wanted her deliver in a very particular want and not late by a minute and I entrasted my 
+                                                fate to Phathisa for this delivery and it was worth it! big Up Phathisa :)”</h3>
+                                            <p>
+                                                - Boni Zulu
+                                                <span>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star fa-lg"></i>
+                                                    <i class="fa fa-star-half-o fa-lg"></i>
+                                                    <i class="fa fa-star-o fa-lg"></i>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screens">
+            <div class="container">
+
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Screens</h1>
+                    <div class="divider"></div>
+                    <p>See what’s included in the App</p>
+                </div>
+
+                <div class="filter scrollpoint sp-effect3">
+                    <a href="javascript:void(0)" class="button js-filter-all active">All Screens</a>
+                    <a href="javascript:void(0)" class="button js-filter-one">Errund Request</a>
+                    <a href="javascript:void(0)" class="button js-filter-two">Live Tracking</a>
+                    <a href="javascript:void(0)" class="button js-filter-three">Gift cards</a>
+                </div>
+                <div class="slider filtering scrollpoint sp-effect5" >
+                    <div class="one">
+                        <img src="assets/img/freeze/screens/profile.jpg" alt="">
+                        <h4>Profile Page</h4>
+                    </div>
+                    <div class="two">
+                        <img src="assets/img/freeze/screens/menu.jpg" alt="">
+                        <h4>Toggel Menu</h4>
+                    </div>
+                    <div class="three">
+                        <img src="assets/img/freeze/screens/weather.jpg" alt="">
+                        <h4>Map View</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/freeze/screens/signup.jpg" alt="">
+                        <h4>Sign Up</h4>
+                    </div>
+                    <div class="one">
+                        <img src="assets/img/freeze/screens/calendar.jpg" alt="">
+                        <h4>Errand Calendar</h4>
+                    </div>
+                    <div class="two">
+                        <img src="assets/img/freeze/screens/options.jpg" alt="">
+                        <h4>Gifts and ticket</h4>
+                    </div>
+                    <div class="three">
+                        <img src="assets/img/freeze/screens/sales.jpg" alt="">
+                        <h4>Sales Analysis</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Demo</h1>
+                    <div class="divider"></div>
+                    <p>Take a closer look at the App</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 scrollpoint sp-effect2">
+                        <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/1ykipKdOtF4"></iframe>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="getApp">
+            <div class="container-fluid">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                    <h1>Test App</h1>
+                    <div class="divider"></div>
+                    <p>Our App is currently in APHA mode availble for testing <a href="../services/home.html">here!</a></p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hanging-phone scrollpoint sp-effect2 hidden-xs">
+                            <img src="assets/img/freeze/freeze-angled2.png" alt="">
+                        </div>
+                        <div class="platforms">
+                            <a href="../services/home.html" class="btn btn-primary inverse scrollpoint sp-effect1">
+                                <i class="fa fa-android fa-3x pull-left"></i>
+                                <span>Download for</span><br>
+                                <b>Android</b>
+                            </a>
+                            
+                                <a href="../services/home.html" class="btn btn-primary inverse scrollpoint sp-effect2">
+                                    <i class="fa fa-apple fa-3x pull-left"></i>
+                                    <span>Download for</span><br>
+                                    <b>Apple IOS</b>
+                                </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </section>
+
+        <section id="support" class="doublediagonal">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Support</h1>
+                    <div class="divider"></div>
+                    <p>For more info and support, contact us!</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Your email">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea cols="30" rows="10" class="form-control" placeholder="Your message"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                </form>
+                            </div>
+                            <div class="col-md-4 col-sm-4 contact-details scrollpoint sp-effect2">
+                                <div class="media">
+                                    <a class="pull-left" href="#" >
+                                        <i class="fa fa-map-marker fa-2x"></i>
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">18 Parrot street, Villa Liza, bokrburg 1459</h4>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <a class="pull-left" href="#" >
+                                        <i class="fa fa-envelope fa-2x"></i>
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            <a href="mailto:support@oleose.com">info@phathisa.online</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <a class="pull-left" href="#" >
+                                        <i class="fa fa-phone fa-2x"></i>
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">+27 78 993 9384</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <a  href="../index.html" class="scrollpoint sp-effect3">
+                    <img src="assets/img/Phathisa logo.png" alt="" class="logo">
+                </a>
+                <div class="social">
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
+                </div>
+                <div class="rights">
+                    <p>Copyright &copy; 2024</p>
+                    <p>All right reserved <a href="http://www.phathisa.online" target="_blank">phathisa</a></p>
+                </div>
+            </div>
+        </footer>
+
+        
+
+    </div>
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/placeholdem.min.js"></script>
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="assets/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
     <script>
-        var TrandingSlider = new Swiper('.tranding-slider', {
-  effect: 'coverflow',
-  grabCursor: true,
-  centeredSlides: true,
-  loop: true,
-  slidesPerView: 'auto',
-  coverflowEffect: {
-    rotate: 0,
-    stretch: 0,
-    depth: 100,
-    modifier: 2.5,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  }
-});
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
     </script>
-  </body>
+</body>
 
 </html>
