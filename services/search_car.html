@@ -504,10 +504,18 @@
       .add-button:hover {
         background-color: #b92929;
       }
-    </style>
+
+      span.price {
+        float: right;
+        color: grey;
+      }
+      
+      </style>
 </head>
 <body>
- 
+  <div class="map-container">
+  <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.1879007781664!2d28.031928115029536!3d-26.20410298343092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68c4f8d261%3A0x1eae9e6eddb3c00!2sJohannesburg%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1645225718996!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" gestureHandling="greedy"></iframe>
+</div>
   <!-- My DIv --
   <div id="mydiv">
     <div id="mydivheader">Click </div>
@@ -525,25 +533,109 @@
             <div class="m-containe">
                 <!-- Your login form content goes here -->
 
+
             <div id="div1" class="req-container">
-                <button class="dropdown-button">Check your parking history</button>
-                  <p class="dropdown-description">Enter your Number Plate</p>
-                  <form>
-                    <input class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
-                    <button class="form-button" type="submit">Search</button>
-                  </form>
-            </div>
+              <button class="dropdown-button">Check your parking history</button>
+              <p class="dropdown-description">Enter your Number Plate</p>
+              <form id="searchForm">
+                  <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
+                  <button class="show-button" style="width: 100%;" type="submit">Search</button>
+              </form>
+          </div>
+          <style>
+            .result-container {
+            background-color: #fff; /* Change background color to red */
+            padding: 2px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .result-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .result-heading {
+            color: white; /* Color for Plate and Owing */
+            margin-bottom: 5px;
+            
+        }
+          </style>
+            <div style="" id="searchResult" class="login-form result-container">
+              <!-- Search result will be displayed here -->
+              <p>Your Search results will show here</p>
+          </div>
         </div>
           </div>
+          <script>
+            // Temporary database with potential places
+            var database = [
+                { plate: "KC91SFGP", place: "<div>Moaboneng", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
+                { plate: "KC91SFGP", place: "<div>Moaboneng", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
+                { plate: "KC93SFGP", place: "<div>Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                { plate: "CA93SFGP", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                { plate: "CA93SFGP", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
+            ];
+            '<div class="col-25">'
+        '<div class="container">'
+          '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>'
+          '<p><a href="#">Product 1</a> <span class="price">$15</span></p>'
+          '<p><a href="#">Product 2</a> <span class="price">$5</span></p>'
+          '<p><a href="#">Product 3</a> <span class="price">$8</span></p>'
+          '<p><a href="#">Product 4</a> <span class="price">$2</span></p>'
+          '<hr>'
+          '<p>Total <span class="price" style="color:black"><b>$30</b></span></p>'
+        '</div>'
+      '</div>'
+            // JavaScript logic
+            document.getElementById("searchForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent form submission
+                var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
+                var result = searchDatabase(inputPlate);
+                if (result) {
+                    // Displaying search result with multiple items
+                    var resultHTML = "";
+                    for (var i = 0; i < result.length; i++) {
+                        resultHTML += '<div class="login-form" style="">' +
+                        '<div class="result-item">' +
+                            '<h4 class="">Plate number:' +
+                            '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
+                            '<p class="">PLC:' +
+                            '<span class="price" style="color:black">' + result[i].place + '</span></p>' +
+                            '<p class="">Date:' +
+                            '<span class="price" style="color:black">' + result[i].date + '</span></p>' +
+                            '<p class="">Time In:' +
+                            '<span class="price" style="color:black">' + result[i].time_in + '</span></p>' +
+                            '<p class="">Time Out:' +
+                            '<span class="price" style="color:black">' + result[i].time_out + '</span></p>' +
+                            '<p class="">Owing:' +
+                            '<span class="price" style="color:black">' + result[i].owing + '</span></p>' +
+                            '</div>'
+                            '</div>';
+                    }
+                    document.getElementById("searchResult").innerHTML = resultHTML;
+                } else {
+                    document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
+                }
+            });
+      
+            // Function to search the database for the entered plate number
+            function searchDatabase(plate) {
+                var results = [];
+                for (var i = 0; i < database.length; i++) {
+                    if (database[i].plate === plate) {
+                        results.push(database[i]);
+                    }
+                }
+                return results.length > 0 ? results : null;
+            }
+        </script>
           <div class="login-form" >
-            <div class="m-containe">
-              
-            
-            <!-- Your login form content goes here -->
-
-         
-
-            </div>
+            <div class="m-containe"> <!-- Your login form content goes here --></div>
           </div>
           <div class="dot-container">
           </div>
@@ -569,10 +661,14 @@
       </div>
     </div>
       </div>
-    <div class="menu-btn" onclick="toggleLeftMenu()">
+    <div class="menu-btn" onclick="toggleBack()">
         <i class="fas fa-arrow-left" alt="back"></i>
     </div>
-   
+    <script>
+      function toggleBack() {
+        window.location.href = "home.html";
+      }
+    </script>
     <div class="right-menu-btn" onclick="toggleRightMenu()">
       <i class="fas fa-bell" alt="notifications"></i>
       

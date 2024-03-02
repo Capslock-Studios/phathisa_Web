@@ -571,9 +571,14 @@
       </div>
     </div>
       </div>
-    <div class="menu-btn" ><a href="home.html">
-        <i class="fas fa-arrow-left" alt="back"></i></a>
+      <div class="menu-btn" onclick="toggleBack()">
+        <i class="fas fa-arrow-left" alt="back"></i>
     </div>
+    <script>
+      function toggleBack() {
+        window.location.href = "home.html";
+      }
+    </script>
    
     <div class="right-menu-btn" onclick="toggleRightMenu()">
       <i class="fas fa-bell" alt="notifications"></i>

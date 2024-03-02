@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Car</title>
+    <style>
+        /* Your CSS styles go here */
+        .scrollable-div {
+            /* Add your styles */
+            background-color: #fff; /* Change to red color */
+            padding: 20px; /* Add padding for better visibility */
+        }
+        .result-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .result-heading {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .result-data {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrollable-div" id="scrollableDiv">  
+        <div class="sipper-heading">Search Car</div>
+        <div class="login-form">
+            <div class="m-container">
+                <!-- Your login form content goes here -->
+                <div id="div1" class="req-container">
+                    <button class="dropdown-button">Check your parking history</button>
+                    <p class="dropdown-description">Enter your Number Plate</p>
+                    <form id="searchForm">
+                        <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
+                        <button class="form-button" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="searchResult" class="login-form">
+            <div class="m-container">
+                <!-- Search result will be displayed here -->
+            </div>
+        </div>
+        <div class="dot-container">
+            <!-- Other content goes here -->
+        </div>
+    </div>
+
+    <script>
+        // Temporary database with potential places
+        var database = [
+            { plate: "KC91SFGP", place: "<div>Moaboneng Presinct</div>", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
+            { plate: "KC91SFGP", place: "<div>Moaboneng Presinct</div>", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
+            { plate: "KC93SFGP", place: "<div>Marshal Town, Johannesburg</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+            { plate: "CA93SFGP", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+            { plate: "CA93SFGP", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+            { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
+        ];
+        '<div class="col-25">'
+    '<div class="container">'
+      '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>'
+      '<p><a href="#">Product 1</a> <span class="price">$15</span></p>'
+      '<p><a href="#">Product 2</a> <span class="price">$5</span></p>'
+      '<p><a href="#">Product 3</a> <span class="price">$8</span></p>'
+      '<p><a href="#">Product 4</a> <span class="price">$2</span></p>'
+      '<hr>'
+      '<p>Total <span class="price" style="color:black"><b>$30</b></span></p>'
+    '</div>'
+  '</div>'
+        // JavaScript logic
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
+            var result = searchDatabase(inputPlate);
+            if (result) {
+                // Displaying search result with multiple items
+                var resultHTML = "";
+                for (var i = 0; i < result.length; i++) {
+                    resultHTML += '<div class="result-item">' +
+                        '<h4 class="">Plate number:' +
+                        '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
+                        '<p class="">PLC:' +
+                        '<span class="price" style="color:black">' + result[i].place + '</span></p>' +
+                        '<p class="">Date:' +
+                        '<span class="price" style="color:black">' + result[i].date + '</span></p>' +
+                        '<p class="">Time In:' +
+                        '<span class="price" style="color:black">' + result[i].time_in + '</span></p>' +
+                        '<p class="">Time Out:' +
+                        '<span class="price" style="color:black">' + result[i].time_out + '</span></p>' +
+                        '<p class="">Owing:' +
+                        '<span class="price" style="color:black">' + result[i].owing + '</span></p>' +
+                        '</div>';
+                }
+                document.getElementById("searchResult").innerHTML = resultHTML;
+            } else {
+                document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
+            }
+        });
+  
+        // Function to search the database for the entered plate number
+        function searchDatabase(plate) {
+            var results = [];
+            for (var i = 0; i < database.length; i++) {
+                if (database[i].plate === plate) {
+                    results.push(database[i]);
+                }
+            }
+            return results.length > 0 ? results : null;
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Responsive Checkout Form</h2>
+<p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+<div class="row">
+  
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
