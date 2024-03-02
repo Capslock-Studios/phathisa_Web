@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Menu Button</title>
-
+  <style>
+    .pay-container {
+      text-align: center;
+    }
+  
+    .price-button {
+      display: inline-block;
+      height: 50px;
+      width: 100px;
+      margin: 10px;
+      padding: 15px 22px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .price-button:hover {
+      background-color: #0056b3;
+    }
+  
+    .pay-button {
+      display: inline-block;
+      margin: 3px;
+      padding: 8px 15px;
+      font-size: 18px;
+      background-color: #13b243;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  
+    .pay-button:hover {
+      background-color: #08762b;
+    }
+  
+    .cancel-button {
+      display: inline-block;
+      margin: 3px;
+      padding: 8px 15px;
+      font-size: 18px;
+      background-color: #fd3d36;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  
+    .cancel-button:hover {
+      background-color: #910909;
+    }
+    .display {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 5px;
+      border: 1px solid #888;
+      width: 50%;
+      text-align: center;
+      border-radius: 5px;
+    }
+  
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    input[type="text"],
+    input[type="submit"] {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  
+    @media screen and (max-width: 600px) {
+    .modal-content {
+      background-color: #fefefe;
+      border: 1px solid #888;
+      width: 100%;
+      text-align: center;
+      border-radius: 5px;
+    }
+  }
+  </style>
   <style>
     body {
       margin: 0;
@@ -504,18 +618,10 @@
       .add-button:hover {
         background-color: #b92929;
       }
-
-      span.price {
-        float: right;
-        color: grey;
-      }
-      
-      </style>
+    </style>
 </head>
 <body>
-  <div class="map-container">
-  <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.1879007781664!2d28.031928115029536!3d-26.20410298343092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68c4f8d261%3A0x1eae9e6eddb3c00!2sJohannesburg%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1645225718996!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" gestureHandling="greedy"></iframe>
-</div>
+ 
   <!-- My DIv --
   <div id="mydiv">
     <div id="mydivheader">Click </div>
@@ -528,145 +634,44 @@
     <div class="scrollable-wrapper" id="scrollableWrapper" onclick="toggleHeight()" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()">
       <div class="scrollable-div" id="scrollableDiv">
           
-        <div class="sipper-heading">Search Car</div>
-        <div class="login-form" >
+        <div class="sipper-heading">Parking Attendents</div>
+          <div class="container">
+            <button class="button" id="businessButton">Business</button>
+            <button class="button" id="healthButton">Health</button>
+            <button class="button" id="parkingButton">Parking</button>
+            <button class="button" id="deliveryButton">Delivery</button>
+            <button class="button" id="educationButton">Education</button>
+          </div>
+          <div class="login-form" >
             <div class="m-containe">
-                <!-- Your login form content goes here -->
-
+              
+            
+            <!-- Your login form content goes here -->
 
             <div id="div1" class="req-container">
-              <button class="dropdown-button">Check your parking history</button>
-              <p class="dropdown-description">Enter your Number Plate</p>
-              <form id="searchForm">
-                  <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
-                  <button class="show-button" style="width: 100%;" type="submit">Search</button>
-              </form>
+             
+                  <div class="pay-container">
+                    <h2>Pay Voucher</h2>
+                    <div>
+                      <button class="price-button" onclick="addToDisplay(10)">R10</button>
+                      <button class="price-button" onclick="addToDisplay(15)">R15</button>
+                    </div>
+                    <div>
+                      <button class="price-button" onclick="addToDisplay(50)">R50</button>
+                      <button class="price-button" onclick="addToDisplay(100)">R100</button>
+                    </div>
+                    <div class="display" id="display">Total: R0</div>
+                    <button class="cancel-button" onclick="resetTotal()">Correction</button>
+                    <button class="pay-button" onclick="payNow()">Pay now</button>
+                  </div>
+             
+            </div>
+
+     
+
+            </div>
           </div>
-          <style>
-            .result-container {
-            background-color: #fff; /* Change background color to red */
-            padding: 2px;
-            margin-top: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .result-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .result-heading {
-            color: white; /* Color for Plate and Owing */
-            margin-bottom: 5px;
-           
-            
-        }
-
-
-          </style>
-            <div style="" id="searchResult" class="login-form result-container">
-              <!-- Search result will be displayed here -->
-              <p>Your Search results will show here</p>
-          </div>
-        </div>
-          </div>
-          <script>
-            function togglePay() {
-              window.location.href = "pay_balance.html";
-            }
-          </script>
-           <script>
-            function toggleBack() {
-              window.location.href = "home.html";
-            }
-          </script>
-    
-          <script>
-            // Temporary database with potential places
-            var database = [
-                { plate: "KC91SFGP", place: "<div>Moaboneng", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
-                { plate: "KC91SFGP", place: "<div>Moaboneng", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
-                { plate: "KC93SFGP", place: "<div>Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "CA93SFGP", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "CA93SFGP", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
-            ];
-
-             // JavaScript logic
-             document.getElementById("searchForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent form submission
-                var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
-                var result = searchDatabase(inputPlate);
-                if (result) {
-                    // Displaying search result with multiple items
-                    var resultHTML = "";
-                    var plateCount = result.length;
-                    var plateText = plateCount === 1 ? "Plate No. Appears once" : "Plate No. Appears " + plateCount + " times";
-                    resultHTML += '<div class="login-form" style="">' +
-                      '<div class="result-item" style=" height: 250px;" ' + 
-                        '<h4 class="result-heading">' + plateText + '</h4>' +
-                        '<h4 class="result-heading">Plate numbers: <span class="result-data">' + result[0].plate + '</span></h4>' +
-                        '<h4 class="result-heading">PLC: <span class="result-data">' + result[0].place + '</span></h4>' +
-                        '<h4 class="result-heading">Date: <span class="result-data">' + result[0].date + '</span></h4>' +
-                        '<h4 class="result-heading">Time In: <span class="result-data">' + result[0].time_in + '</span></h4>' +
-                        '<h4 class="result-heading">Time Out: <span class="result-data">' + result[0].time_out + '</span></h4>' +
-                        '<h4 class="result-heading">Owing: <span class="result-data">' + result[0].owing + '</span></h4>' +
-                        '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
-                                '</div>';
-                                '</div';
-                    document.getElementById("searchResult").innerHTML = resultHTML;
-                } 
-            });
-            // JavaScript logic
-            document.getElementById("searchForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent form submission
-                var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
-                var result = searchDatabase(inputPlate);
-                if (result) {
-                    // Displaying search result with multiple items
-                    var resultHTML = "";
-                    for (var i = 0; i < result.length; i++) {
-                        resultHTML += '' +
-                        '<div class="result-item" style=" height: 250px;" ' + 
-                            '<h4 class="">Plate number:' +
-                            '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
-                            '<p class="">PLC:' +
-                            '<span class="price" style="color:black">' + result[i].place + '</span></p>' +
-                            '<p class="">Date:' +
-                            '<span class="price" style="color:black">' + result[i].date + '</span></p>' +
-                            '<p class="">Time In:' +
-                            '<span class="price" style="color:black">' + result[i].time_in + '</span></p>' +
-                            '<p class="">Time Out:' +
-                            '<span class="price" style="color:black">' + result[i].time_out + '</span></p>' +
-                            '<p class="">Owing:' +
-                            '<span class="price" style="color:black">' + result[i].owing + '</span></p>' + 
-                        '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
-                            '</div>'
-                            '</div>';
-                    }
-                    document.getElementById("searchResult").innerHTML = resultHTML;
-                } else {
-                    document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
-                }
-            });
-      
-            // Function to search the database for the entered plate number
-            function searchDatabase(plate) {
-                var results = [];
-                for (var i = 0; i < database.length; i++) {
-                    if (database[i].plate === plate) {
-                        results.push(database[i]);
-                    }
-                }
-                return results.length > 0 ? results : null;
-            }
-        </script>
-          <div class="login-form" >
-            <div class="m-containe"> <!-- Your login form content goes here --></div>
-          </div>
+          
           <div class="dot-container">
           </div>
         </div>
@@ -676,29 +681,90 @@
           <div class="dot-container">
           </div>
         </div>
-        <div class="scrollable-div" id="scrollableDiv">
-         
-            <!-- Your login form content goes here -->
-            <h2>Errand Run</h2>
-            <form action="">
-              <label for="username">Start Location</label><br>
-              <input type="text" id="username" name="username"><br>
-              <label for="password">End location</label><br>
-              <input type="password" id="password" name="password"><br><br>
-              <input type="submit" value="CONFIRM">
-            </form>
-      <div class="dot-container">
+      </div>
+    <div class="menu-btn" onclick="toggleLeftMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Add payment details and Submit</h3>
+        <p>Total Amount: <span id="totalAmount"></span></p><br>
+        <p>Transaction No.: <span id="transactionNumber"></span></p>
+        <form id="paymentForm">
+          <input type="text" name="cardNumber" placeholder="Card Number" required><br>
+          <input type="text" name="expiryDate" placeholder="Expiry Date" required><br>
+          <input type="text" name="cvv" placeholder="CVV" required><br>
+          <input type="submit" value="Submit">
+        </form>
+        <div class="payment-options">
+          <p>Other Payment Options:</p>
+          <img src="eft-icon.png" alt="EFT Icon" width="50">
+          <img src="paypal-icon.png" alt="PayPal Icon" width="50">
+          <img src="bitcoin-icon.png" alt="Bitcoin Icon" width="50">
+        </div>
       </div>
     </div>
+    
+    <div id="successModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSuccessModal()">&times;</span>
+        <h3>Success!</h3>
+        <p>You have purchased a voucher worth <span id="successTotalAmount"></span>. Here is your voucher number: <span id="voucherNumber"></span>.</p>
+        <button onclick="dismissSuccessModal()">Okay</button>
       </div>
-    <div class="menu-btn" onclick="toggleBack()">
-        <i class="fas fa-arrow-left" alt="back"></i>
     </div>
+    
     <script>
-      function toggleBack() {
-        window.location.href = "home.html";
+      let totalAmount;
+      let transactionNumber;
+    
+      function goToPayPage() {
+        window.location.href = 'pay.html';
       }
+    
+      function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+      }
+    
+      function closeSuccessModal() {
+        document.getElementById('successModal').style.display = "none";
+      }
+    
+      function dismissSuccessModal() {
+        closeSuccessModal();
+      }
+    
+      function generateRandomNumber() {
+        return Math.floor(Math.random() * 90000000) + 10000000;
+      }
+    
+      document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        totalAmount = document.getElementById('totalAmount').textContent;
+        transactionNumber = generateRandomNumber();
+    
+        closeModal();
+        document.getElementById('successTotalAmount').textContent = totalAmount;
+        document.getElementById('voucherNumber').textContent = transactionNumber;
+        document.getElementById('successModal').style.display = "block";
+      });
     </script>
+    
+    
+    
+    <div class="menu" id="menu">
+      <!-- Your menu content goes here -->
+      <span class="close-btn" onclick="toggleLeftMenu()">&#10006;</span>
+      <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Wallet</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </div>
     <div class="right-menu-btn" onclick="toggleRightMenu()">
       <i class="fas fa-bell" alt="notifications"></i>
       
@@ -1035,6 +1101,31 @@
 
 </script>
 
+
+<script>
+    let total = 0;
+  
+    function addToDisplay(amount) {
+      total += amount;
+      document.getElementById('display').textContent = "Total: R" + total;
+    }
+  
+    function payNow() {
+      // Display modal
+      document.getElementById('myModal').style.display = "block";
+    }
+  
+    function closeModal() {
+      // Close modal
+      document.getElementById('myModal').style.display = "none";
+    }
+  
+    function resetTotal() {
+      // Reset total to 0
+      total = 0;
+      document.getElementById('display').textContent = "Total: R" + total;
+    }
+  </script>
 
 </body>
 </html>

@@ -54,24 +54,14 @@
     <script>
         // Temporary database with potential places
         var database = [
-            { plate: "KC91SFGP", place: "<div>Moaboneng Presinct</div>", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
-            { plate: "KC91SFGP", place: "<div>Moaboneng Presinct</div>", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
-            { plate: "KC93SFGP", place: "<div>Marshal Town, Johannesburg</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-            { plate: "CA93SFGP", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-            { plate: "CA93SFGP", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-            { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
+            { plate: "KC91SFGP", place: "Moaboneng Precinct", date: "16/02/2024", time_in: "14:34", time_out :"15:00", owing:"R10.00" },
+            { plate: "KC91SFGP", place: "Moaboneng Precinct", date: "19/02/2024", time_in: "13:31", time_out :"14:30", owing:"R30.00" },
+            { plate: "KC93SFGP", place: "Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31", time_out :"12:30", owing:"R40.00" },
+            { plate: "CA93SFGP", place: "Borkburg North", date: "19/02/2024", time_in: "13:31", time_out :"12:30", owing:"R40.00" },
+            { plate: "CA93SFGP", place: "Sandton", date: "19/02/2024", time_in: "13:31", time_out :"12:30", owing:"R40.00" },
+            { plate: "MP94SFGP", place: "Rosebank", date: "19/02/2024", time_in: "13:31", time_out :"12:30", owing:"R40.00" }
         ];
-        '<div class="col-25">'
-    '<div class="container">'
-      '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>'
-      '<p><a href="#">Product 1</a> <span class="price">$15</span></p>'
-      '<p><a href="#">Product 2</a> <span class="price">$5</span></p>'
-      '<p><a href="#">Product 3</a> <span class="price">$8</span></p>'
-      '<p><a href="#">Product 4</a> <span class="price">$2</span></p>'
-      '<hr>'
-      '<p>Total <span class="price" style="color:black"><b>$30</b></span></p>'
-    '</div>'
-  '</div>'
+
         // JavaScript logic
         document.getElementById("searchForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent form submission
@@ -80,30 +70,24 @@
             if (result) {
                 // Displaying search result with multiple items
                 var resultHTML = "";
-                for (var i = 0; i < result.length; i++) {
-                    resultHTML += '<div class="result-item">' +
-                        '<h4 class="">Plate number:' +
-                        '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
-                        '<h4 class="">PLC:' +
-                        '<span class="price" style="color:black">' + result[i].place + '</span></h4>' +
-                        '<h4 class="">Date:' +
-                        '<span class="price" style="color:black">' + result[i].date + '</span></h4>' +
-                        '<h4 class="">Time In:' +
-                        '<span class="price" style="color:black">' + result[i].time_in + '</span></h4>' +
-
-                        
-                        '<div class="result-heading">Time Out:</div>' +
-                        '<div class="result-data">' + result[i].time_out + '</div>' +
-                        '<div class="result-heading">Owing:</div>' +
-                        '<div class="result-data">' + result[i].owing + '</div>' +
-                        '</div>';
-                }
+                var plateCount = result.length;
+                var plateText = plateCount === 1 ? "Plate No. Appears once" : "Plate No. Appears " + plateCount + " times";
+                resultHTML += '<div class="result-item">' +
+                    '<h4 class="result-heading">' + plateText + '</h4>' +
+                    '<h4 class="result-heading">Plate number: <span class="result-data">' + result[0].plate + '</span></h4>' +
+                    '<h4 class="result-heading">PLC: <span class="result-data">' + result[0].place + '</span></h4>' +
+                    '<h4 class="result-heading">Date: <span class="result-data">' + result[0].date + '</span></h4>' +
+                    '<h4 class="result-heading">Time In: <span class="result-data">' + result[0].time_in + '</span></h4>' +
+                    '<h4 class="result-heading">Time Out: <span class="result-data">' + result[0].time_out + '</span></h4>' +
+                    '<h4 class="result-heading">Owing: <span class="result-data">' + result[0].owing + '</span></h4>' +
+                    '<button class="show-button" style="width: 100%;" type="submit" onclick="toggleBack()">Pay Now</button>' +
+                            '</div>';
                 document.getElementById("searchResult").innerHTML = resultHTML;
             } else {
                 document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
             }
         });
-  
+
         // Function to search the database for the entered plate number
         function searchDatabase(plate) {
             var results = [];
@@ -117,4 +101,3 @@
     </script>
 </body>
 </html>
-
