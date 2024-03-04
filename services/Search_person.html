@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Menu Button</title>
+  <title>Parking Attendents</title>
 
   <style>
     body {
@@ -528,20 +528,22 @@
     <div class="scrollable-wrapper" id="scrollableWrapper" onclick="toggleHeight()" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()">
       <div class="scrollable-div" id="scrollableDiv">
           
-        <div class="sipper-heading">Search person</div>
+        <div class="sipper-heading">Search Attendents</div>
         <div class="login-form" >
             <div class="m-containe">
                 <!-- Your login form content goes here -->
 
 
             <div id="div1" class="req-container">
-              <button class="dropdown-button">Check your parking Attendant</button>
-              <p class="dropdown-description">Enter your Attendant's ID</p>
+              <button class="dropdown-button">Check your parking history</button>
+              <p class="dropdown-description">Enter your Attendent ID</p>
               <form id="searchForm">
-                  <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
+                <label for="userNameInput">Enter Username:</label>
+                <input id="userNameInput" class="form-input" type="text" placeholder="Usernameonclick="stopPropagation(event)">
                   <button class="show-button" style="width: 100%;" type="submit">Search</button>
               </form>
-          </div>
+            </div>
+            
           <style>
             .result-container {
             background-color: #fff; /* Change background color to red */
@@ -559,10 +561,13 @@
         }
 
         .result-heading {
-            color: white; /* Color for Plate and Owing */
+            color: rgb(101, 160, 254); /* Color for Plate and Owing */
             margin-bottom: 5px;
+           
             
         }
+
+
           </style>
             <div style="" id="searchResult" class="login-form result-container">
               <!-- Search result will be displayed here -->
@@ -571,69 +576,17 @@
         </div>
           </div>
           <script>
-            // Temporary database with potential places
-            var database = [
-                { plate: "1234567", place: "<div>Moaboneng", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
-                { plate: "Mboseni Mtre", place: "<div>Moaboneng", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
-                { plate: "Mngiseni M", place: "<div>Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "Mbngiseni M", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "Mongiseni M", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
-                { plate: "Miseni M", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
-            ];
-            '<div class="col-25">'
-        '<div class="container">'
-          '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>'
-          '<p><a href="#">Product 1</a> <span class="price">$15</span></p>'
-          '<p><a href="#">Product 2</a> <span class="price">$5</span></p>'
-          '<p><a href="#">Product 3</a> <span class="price">$8</span></p>'
-          '<p><a href="#">Product 4</a> <span class="price">$2</span></p>'
-          '<hr>'
-          '<p>Total <span class="price" style="color:black"><b>$30</b></span></p>'
-        '</div>'
-      '</div>'
-            // JavaScript logic
-            document.getElementById("searchForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent form submission
-                var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
-                var result = searchDatabase(inputPlate);
-                if (result) {
-                    // Displaying search result with multiple items
-                    var resultHTML = "";
-                    for (var i = 0; i < result.length; i++) {
-                        resultHTML += '<div class="login-form" style="">' +
-                        '<div class="result-item">' +
-                            '<h4 class="">Plate number:' +
-                            '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
-                            '<p class="">PLC:' +
-                            '<span class="price" style="color:black">' + result[i].place + '</span></p>' +
-                            '<p class="">Date:' +
-                            '<span class="price" style="color:black">' + result[i].date + '</span></p>' +
-                            '<p class="">Time In:' +
-                            '<span class="price" style="color:black">' + result[i].time_in + '</span></p>' +
-                            '<p class="">Time Out:' +
-                            '<span class="price" style="color:black">' + result[i].time_out + '</span></p>' +
-                            '<p class="">Owing:' +
-                            '<span class="price" style="color:black"> ' + result[i].owing + '</span></p>' +
-                            '</div>'
-                            '</div>';
-                    }
-                    document.getElementById("searchResult").innerHTML = resultHTML;
-                } else {
-                    document.getElementById("searchResult").innerHTML = "No matching record found for Attendant ID: " + inputPlate;
-                }
-            });
-      
-            // Function to search the database for the entered plate number
-            function searchDatabase(plate) {
-                var results = [];
-                for (var i = 0; i < database.length; i++) {
-                    if (database[i].plate === plate) {
-                        results.push(database[i]);
-                    }
-                }
-                return results.length > 0 ? results : null;
+            function togglePay() {
+              window.location.href = "pay_balance.html";
             }
-        </script>
+          </script>
+           <script>
+            function toggleBack() {
+              window.location.href = "home.html";
+            }
+          </script>
+    
+  
           <div class="login-form" >
             <div class="m-containe"> <!-- Your login form content goes here --></div>
           </div>
@@ -669,7 +622,7 @@
         window.location.href = "home.html";
       }
     </script>
-    <div class="right-menu-btn" onclick="toggleRightMenu()">
+    <div img src="./profile_picture.jpg" class="right-menu-btn" onclick="toggleRightMenu()">
       <i class="fas fa-bell" alt="notifications"></i>
       
     </div>
@@ -760,6 +713,56 @@
       event.stopPropagation();
     }
   </script>
+<style>
+  .profile-picture {
+  display: block;
+  margin: 0 auto; /* Centers the profile picture */
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  border-radius: 50%; /* Creates a round shape */
+}
+
+</style>
+<script>
+  var database = [
+    { username: "MB1193843", email: "Mbongiseni Mdlolo@phathisa.co.za", role: "Marshal Town" },
+    { username: "JaneSmith", email: "jane@example.com", role: "user" },
+    { username: "AlexJohnson", email: "alex@example.com", role: "user" },
+    { username: "EmilyBrown", email: "emily@example.com", role: "user" }
+  ];
+
+  document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    var inputUserName = document.getElementById("userNameInput").value.trim().toLowerCase();
+    var result = searchDatabase(inputUserName);
+    if (result) {
+      var resultHTML = "";
+      for (var i = 0; i < result.length; i++) {
+          resultHTML += '<div class="result-item">' +
+            '<img src="./profile_picture.jpg" class="profile-picture" />' + // Adding the profile picture
+            '<h4 class="result-heading">Username: <span class="result-data">' + result[i].username + '</span></h4>' +
+            '<p class="result-info">Email: <span class="result-data">' + result[i].email + '</span></p>' +
+            '<p class="result-info">Role: <span class="result-data">' + result[i].role + '</span></p>' +
+            '</div>';
+        }
+      document.getElementById("searchResult").innerHTML = resultHTML;
+    } else {
+      document.getElementById("searchResult").innerHTML = "No matching record found for user: " + inputUserName;
+    }
+  });
+
+  function searchDatabase(username) {
+    var results = [];
+    for (var i = 0; i < database.length; i++) {
+      if (database[i].username.toLowerCase() === username) {
+        results.push(database[i]);
+      }
+    }
+    return results.length > 0 ? results : null;
+  }
+</script>
+
+
    <style>
   
     .sipper-container {
@@ -1008,3 +1011,5 @@
 
 </body>
 </html>
+
+
