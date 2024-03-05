@@ -59,10 +59,10 @@
       .menu {
         position: fixed;
         top: 0;
-        left: -300px; /* Initially hidden */
-        width: 300px;
+        left: -310px; /* Initially hidden */
+        width: 310px;
         height: 100%;
-        background-color: #333333;
+        background-color: #ffffff;
         transition: left 0.3s ease;
         z-index: 5;
       }
@@ -79,7 +79,7 @@
   
       .menu ul li {
         padding: 15px 20px;
-        border-bottom: 1px solid #555555;
+        border-bottom: 1px solid #98baf5;
       }
   
       .menu ul li:last-child {
@@ -87,7 +87,7 @@
       }
   
       .menu ul li a {
-        color: #ffffff;
+        color: #747474;
         text-decoration: none;
         font-size: 18px;
       }
@@ -101,7 +101,7 @@
         top: 20px;
         right: 20px;
         font-size: 24px;
-        color: #ffffff;
+        color: #64aaff;
         cursor: pointer;
       }
   
@@ -136,7 +136,7 @@
         right: -300px; /* Initially hidden */
         width: 300px;
         height: 100%;
-        background-color: #333333;
+        background-color: #ffffff;
         transition: right 0.3s ease; /* Transition the right property */
         color: green;
         z-index: 6;
@@ -154,7 +154,7 @@
   
       .right-menu ul li {
         padding: 15px 20px;
-        border-bottom: 1px solid #555555;
+        border-bottom: 1px solid #98baf5;
       }
   
       .right-menu ul li:last-child {
@@ -162,7 +162,7 @@
       }
   
       .right-menu ul li a {
-        color: #ffffff;
+        color: #686868;
         text-decoration: none;
         font-size: 18px;
       }
@@ -176,7 +176,7 @@
         top: 20px;
         right: 20px;
         font-size: 24px;
-        color: #ffffff;
+        color: #64aaff;
         cursor: pointer;
       }
   
@@ -248,7 +248,7 @@
         left: 0;
         width: 100%;
         height: 300px; /* Adjust height as needed */
-        background-color: #333333;
+        background-color: #ffffff;
         transition: bottom 0.3s ease;
       }
   
@@ -264,7 +264,7 @@
   
       .bottom-menu ul li {
         padding: 15px 20px;
-        border-bottom: 1px solid #555555;
+        border-bottom: 1px solid #98baf5;
       }
   
       .bottom-menu ul li:last-child {
@@ -272,7 +272,7 @@
       }
   
       .bottom-menu ul li a {
-        color: #ffffff;
+        color: #858585;
         text-decoration: none;
         font-size: 18px;
       }
@@ -283,12 +283,14 @@
   
       .close-btn {
         position: absolute;
+        justify-content: center;
         top: 20px;
         right: 20px;
         font-size: 24px;
-        color: #ffffff;
+        color: #64aaff;
         cursor: pointer;
-      }
+        border-radius: 50%;
+       }
   
   
   
@@ -508,6 +510,9 @@
 </head>
 <body>
  
+  <div class="map-container">
+    <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.1879007781664!2d28.031928115029536!3d-26.20410298343092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68c4f8d261%3A0x1eae9e6eddb3c00!2sJohannesburg%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1645225718996!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" gestureHandling="greedy"></iframe>
+  </div>
   <!-- My DIv --
   <div id="mydiv">
     <div id="mydivheader">Click </div>
@@ -516,7 +521,53 @@
   <!-- Rest of your HTML content -->
   
 
+  <!-- Modal -->
+  <style>
+    /* Your CSS styles here */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
 
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .modal-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+<div id="searchResultModal" class="modal">
+<div class="modal-content">
+<span class="modal-close" onclick="closeModal()">&times;</span>
+<div id="searchResultCarGuard" class="login-form result-container">
+<!-- Search result will be displayed here -->
+<p>Your Search results will show here</p>
+</div>
+</div>
+</div>
     <div class="scrollable-wrapper" id="scrollableWrapper" onclick="toggleHeight()" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()">
       <div class="scrollable-div" id="scrollableDiv">
           
@@ -536,30 +587,236 @@
 
             <div id="div1" class="req-container">
               <div class="dropdown" onclick="toggleDropdown(3)">
-                <button class="dropdown-button">Pay For Parking</button>
+                <button class="dropdown-button">Check your parking history</button>
                 <div id="dropdown-content-3" class="dropdown-content">
-                  <p class="dropdown-description">Cash, EFT, Ewallet available</p>
-                  <form>
-                    <input class="form-input" type="text" placeholder="Amount" onclick="stopPropagation(event)">
-                    <input class="form-input" type="text" placeholder="Attendent ID" onclick="stopPropagation(event)">
-                    <button class="form-button" type="submit">Submit</button>
-                  </form>
+                  <p class="dropdown-description">Enter your Number Plate</p>
+                  <form id="searchForm">
+                    <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
+                    <button class="show-button" style="width: 100%;" type="submit">Search</button>
+                </form>
+                </div>
+                <style>
+                  .result-container {
+                  background-color: #fff; /* Change background color to red */
+                  padding: 2px;
+                  margin-top: 10px;
+                  border-radius: 5px;
+                  text-align: center;
+              }
+      
+              .result-item {
+                  border: 1px solid #ccc;
+                  padding: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+              }
+      
+              .result-heading {
+                  color: white; /* Color for Plate and Owing */
+                  margin-bottom: 5px;
+                 
+                  
+              }
+      
+      
+                </style>
+                  <div style="" id="searchResult" class="login-form result-container">
+                    <!-- Search result will be displayed here -->
+                    <p>Your Search results will show here</p>
                 </div>
               </div>
+
+              <script>
+                function togglePay() {
+                  window.location.href = "pay_balance.html";
+                }
+              </script>
+               <script>
+                function toggleBack() {
+                  window.location.href = "home.html";
+                }
+              </script>
+        
+              <script>
+                // Temporary database with potential places
+                var database = [
+                    { plate: "KC91SFGP", place: "<div>Moaboneng", date: "16/02/2024", time_in: "14:34",time_out :"15:00", owing:"R10.00" },
+                    { plate: "KC91SFGP", place: "<div>Moaboneng", date: "19/02/2024", time_in: "13:31",time_out :"14:30", owing:"R30.00" },
+                    { plate: "KC93SFGP", place: "<div>Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                    { plate: "CA93SFGP", place: "<div>Borkburg North</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                    { plate: "CA93SFGP", place: "<div>Sandton</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" },
+                    { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
+                ];
+    
+                 // JavaScript logic
+                 document.getElementById("searchForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // Prevent form submission
+                    var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
+                    var result = searchDatabase(inputPlate);
+                    if (result) {
+                        // Displaying search result with multiple items
+                        var resultHTML = "";
+                        var plateCount = result.length;
+                        var plateText = plateCount === 1 ? "Plate No. Appears once" : "Plate No. Appears " + plateCount + " times";
+                        resultHTML += '<div class="login-form" style="">' +
+                          '<div class="result-item" style=" height: 250px;" ' + 
+                            '<h4 class="result-heading">' + plateText + '</h4>' +
+                            '<h4 class="result-heading">Plate numbers: <span class="result-data">' + result[0].plate + '</span></h4>' +
+                            '<h4 class="result-heading">PLC: <span class="result-data">' + result[0].place + '</span></h4>' +
+                            '<h4 class="result-heading">Date: <span class="result-data">' + result[0].date + '</span></h4>' +
+                            '<h4 class="result-heading">Time In: <span class="result-data">' + result[0].time_in + '</span></h4>' +
+                            '<h4 class="result-heading">Time Out: <span class="result-data">' + result[0].time_out + '</span></h4>' +
+                            '<h4 class="result-heading">Owing: <span class="result-data">' + result[0].owing + '</span></h4>' +
+                            '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
+                                    '</div>';
+                                    '</div';
+                        document.getElementById("searchResult").innerHTML = resultHTML;
+                    } 
+                });
+                // JavaScript logic
+                document.getElementById("searchForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // Prevent form submission
+                    var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
+                    var result = searchDatabase(inputPlate);
+                    if (result) {
+                        // Displaying search result with multiple items
+                        var resultHTML = "";
+                        for (var i = 0; i < result.length; i++) {
+                            resultHTML += '' +
+                            '<div class="result-item" style=" height: 250px;" ' + 
+                                '<h4 class="">Plate number:' +
+                                '<span class="price" style="color:black">' + result[i].plate + '</span></h4>' +
+                                '<p class="">PLC:' +
+                                '<span class="price" style="color:black">' + result[i].place + '</span></p>' +
+                                '<p class="">Date:' +
+                                '<span class="price" style="color:black">' + result[i].date + '</span></p>' +
+                                '<p class="">Time In:' +
+                                '<span class="price" style="color:black">' + result[i].time_in + '</span></p>' +
+                                '<p class="">Time Out:' +
+                                '<span class="price" style="color:black">' + result[i].time_out + '</span></p>' +
+                                '<p class="">Owing:' +
+                                '<span class="price" style="color:black">' + result[i].owing + '</span></p>' + 
+                            '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
+                                '</div>'
+                                '</div>';
+                        }
+                        document.getElementById("searchResult").innerHTML = resultHTML;
+                    } else {
+                        document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
+                    }
+                });
+          
+                // Function to search the database for the entered plate number
+                function searchDatabase(plate) {
+                    var results = [];
+                    for (var i = 0; i < database.length; i++) {
+                        if (database[i].plate === plate) {
+                            results.push(database[i]);
+                        }
+                    }
+                    return results.length > 0 ? results : null;
+                }
+            </script>
               <div class="dropdown" onclick="toggleDropdown(1)">
-                <button class="dropdown-button">Search Attendent</button>
+                <button class="dropdown-button">Search Car Guard</button>
                 <div id="dropdown-content-1" class="dropdown-content">
-                  <p class="dropdown-description">Enter Attendent Details</p>
-                  <form>
-                    <input class="form-input" type="text" placeholder="Attendent ID" onclick="stopPropagation(event)">
-                    <input class="form-input" type="text" placeholder="Area" onclick="stopPropagation(event)">
-                    <button class="form-button" type="submit">Submit</button>
+                  <p class="dropdown-description">Enter Car Guard Details</p>
+                  
+                  <form id="searchFormCarGuard">
+                    <label for="userNameInput">Enter Username:</label>
+                    <input id="userNameInput" class="form-input" type="text" placeholder="Username" onclick="stopPropagation(event)">
+                    <button class="show-button" style="width: 100%;" type="submit">Search</button>
                   </form>
                 </div>
+                <style>
+                  .result-container {
+                  background-color: #fff; /* Change background color to red */
+                  padding: 2px;
+                  margin-top: 10px;
+                  border-radius: 5px;
+                  text-align: center;
+              }
+      
+              .result-item {
+                  border: 1px solid #ccc;
+                  padding: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+              }
+      
+              .result-heading {
+                  color: rgb(101, 160, 254); /* Color for Plate and Owing */
+                  margin-bottom: 5px;
+                 
+                  
+              }
+      
+      
+                </style>
+                
               </div>
             </div>
 
-     
+            <script>
+              function togglePay() {
+                window.location.href = "pay_balance.html";
+              }
+            </script>
+<style>
+  .profile-picture {
+  display: block;
+  margin: 0 auto; /* Centers the profile picture */
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  border-radius: 50%; /* Creates a round shape */
+}
+
+</style>
+<script>
+  // Your JavaScript code here
+  var database = [
+    { username: "MB1193843", email: "Mbongiseni Mdlolo@phathisa.co.za", role: "Marshal Town" },
+    { username: "JaneSmith", email: "jane@example.com", role: "user" },
+    { username: "MB1193843", email: "alex@example.com", role: "user" },
+    { username: "EmilyBrown", email: "emily@example.com", role: "user" }
+  ];
+
+  document.getElementById("searchFormCarGuard").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    var inputUserName = document.getElementById("userNameInput").value.trim().toLowerCase();
+    var result = searchDatabase(inputUserName);
+    if (result) {
+      var resultHTML = "";
+      for (var i = 0; i < result.length; i++) {
+        resultHTML += '<div class="result-item">' +
+          '<img src="./profile_picture.jpg" class="profile-picture" />' +
+          '<h4 class="result-heading">Username: <span class="result-data">' + result[i].username + '</span></h4>' +
+          '<p class="result-info">Email: <span class="result-data">' + result[i].email + '</span></p>' +
+          '<p class="result-info">Role: <span class="result-data">' + result[i].role + '</span></p>' +
+          '</div>';
+      }
+      document.getElementById("searchResultCarGuard").innerHTML = resultHTML;
+      // Display modal
+      document.getElementById("searchResultModal").style.display = "block";
+    } else {
+      document.getElementById("searchResultCarGuard").innerHTML = "No matching record found for user: " + inputUserName;
+    }
+  });
+
+  function searchDatabase(username) {
+    var results = [];
+    for (var i = 0; i < database.length; i++) {
+      if (database[i].username.toLowerCase() === username) {
+        results.push(database[i]);
+      }
+    }
+    return results.length > 0 ? results : null;
+  }
+
+  function closeModal() {
+    document.getElementById("searchResultModal").style.display = "none";
+  }
+</script>
 
             </div>
           </div>
@@ -587,6 +844,13 @@
       </div>
     </div>
       </div>
+
+      <!---- Search Form ends here-->
+
+
+
+
+
     <div class="menu-btn" onclick="toggleLeftMenu()">
       <i class="fas fa-bars"></i>
     </div>
