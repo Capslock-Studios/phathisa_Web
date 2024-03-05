@@ -597,7 +597,7 @@
                 </div>
                 <style>
                   .result-container {
-                  background-color: #fff; /* Change background color to red */
+                  background-color: #ccc; /* Change background color to red */
                   padding: 2px;
                   margin-top: 10px;
                   border-radius: 5px;
@@ -622,7 +622,6 @@
                 </style>
                   <div style="" id="searchResult" class="login-form result-container">
                     <!-- Search result will be displayed here -->
-                    <p>Your Search results will show here</p>
                 </div>
               </div>
 
@@ -648,32 +647,7 @@
                     { plate: "MP94SFGP", place: "<div>Rosebank</div>", date: "19/02/2024", time_in: "13:31",time_out :"12:30", owing:"R40.00" }
                 ];
     
-                 // JavaScript logic
-                 document.getElementById("searchForm").addEventListener("submit", function(event) {
-                    event.preventDefault(); // Prevent form submission
-                    var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
-                    var result = searchDatabase(inputPlate);
-                    if (result) {
-                        // Displaying search result with multiple items
-                        var resultHTML = "";
-                        var plateCount = result.length;
-                        var plateText = plateCount === 1 ? "Plate No. Appears once" : "Plate No. Appears " + plateCount + " times";
-                        resultHTML += '<div class="login-form" style="">' +
-                          '<div class="result-item" style=" height: 250px;" ' + 
-                            '<h4 class="result-heading">' + plateText + '</h4>' +
-                            '<h4 class="result-heading">Plate numbers: <span class="result-data">' + result[0].plate + '</span></h4>' +
-                            '<h4 class="result-heading">PLC: <span class="result-data">' + result[0].place + '</span></h4>' +
-                            '<h4 class="result-heading">Date: <span class="result-data">' + result[0].date + '</span></h4>' +
-                            '<h4 class="result-heading">Time In: <span class="result-data">' + result[0].time_in + '</span></h4>' +
-                            '<h4 class="result-heading">Time Out: <span class="result-data">' + result[0].time_out + '</span></h4>' +
-                            '<h4 class="result-heading">Owing: <span class="result-data">' + result[0].owing + '</span></h4>' +
-                            '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
-                                    '</div>';
-                                    '</div';
-                        document.getElementById("searchResult").innerHTML = resultHTML;
-                    } 
-                });
-                // JavaScript logic
+               // JavaScript logic
                 document.getElementById("searchForm").addEventListener("submit", function(event) {
                     event.preventDefault(); // Prevent form submission
                     var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
@@ -734,6 +708,7 @@
                   padding: 2px;
                   margin-top: 10px;
                   border-radius: 5px;
+                  width: 85%;
                   text-align: center;
               }
       
