@@ -519,7 +519,317 @@
   </div>
 -->
   <!-- Rest of your HTML content -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
   
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>End Of tour</h3>
+      <div class="login-form" style="
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); padding: 10px; font-family: 'Rubik', sans-serif;">
+      <img src="./sky camel-03.png" alt="User Avatar">
+      <p>"Hi, My name is Errand Camel"</p>
+      <p>
+        Thanks for taking a tour of our website and demo App. 
+        The app is currently only available to a small, managed group as it is still undergoing improvements. 
+      </p><br>
+      <p><strong style="color: #c88c47;">Bellow is a list of services 
+        we can still offer you wihout the App:</strong> <span id="user-name"></span></p>
+        <p>Alternatively, contact the admin if you want to discuss serious business.</p>
+      <button style="border-radius: 40px; text-decoration: none; "><a style=" text-decoration: none; color: #fff;" href="../index.html">End Tour</a></button>
+      <button style="border-radius: 40px; text-decoration: none;"><a  style=" text-decoration: none; color: #fff;" href="Admin_Contact.html"><strong>Admin</strong></a></button>
+  
+  </div>
+      <style>
+        
+  .faq-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .faq {
+    background-color: #daf0ff;
+    border: 1px solid #95cfff;
+    border-radius: 10px;
+    margin: 20px 4px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+  
+  .faq.active {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
+  }
+  
+  .faq.active::before,
+  .faq.active::after {
+    content: '\f075';
+    font-family: 'Font Awesome 5 Free';
+    color: #f3be0f;
+    font-size: 7rem;
+    position: absolute;
+    opacity: 0.2;
+    top: 20px;
+    left: 20px;
+    z-index: 0;
+    visibility: hidden;
+  }
+  
+  .faq.active::before {
+    color: #3498db;
+    top: -10px;
+    left: -30px;
+    transform: rotateY(180);
+  }
+  
+  .faq-title {
+    margin: 0 25px 0 0;
+  }
+  
+  .faq-text {
+    display: none;
+    margin: 30px 0 0;
+  }
+  
+  .faq.active .faq-text {
+    display: block;  
+  }
+  
+  .faq-toggle {
+    background-color: transparent ;
+    border: 0;
+    border-radius: 50%  !important;
+    cursor: pointer  !important;
+    display: flex  !important;
+    align-items: center  !important;
+    justify-content: center  !important;
+    font-size: 16px  !important;
+    padding: 0  !important;
+    position: absolute !important;
+    top: 10px  !important;
+    right: 10px  !important;
+    height: 20px;
+    width: 20px  !important;
+  }
+  
+  .faq-toggle:focus {outline: 0;}
+  
+  .faq-toggle .fa-times {display: none;}
+  
+  .faq.active .faq-toggle .fa-times {
+    display: block;
+    color: #fff;
+  }
+  
+  .faq.active .faq-toggle .fa-chevron-down {display: none;}
+  
+  .faq.active .faq-toggle {background-color: #9fa4a8;}
+  
+  
+  
+      </style>
+     <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">
+          Parking Attendents
+        </h3>
+  
+        <p class="faq-text">
+          We keep track of all parking attendants in your area so you can be sure that your car is left in responsible hands.
+          <br>
+        <button style="border-radius: 40px; text-decoration: none; ">
+          <a style=" text-decoration: none; color: #fff;" href="search_car.html">Search Car</a></button>
+          <button style="border-radius: 40px; text-decoration: none; margin: 5px;">
+            <a style=" text-decoration: none; color: #fff;" href="Search_person.html">Search Person</a></button>
+    
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+  
+      <div class="faq">
+        <h3 class="faq-title">
+          Track your errand runner through whatsApp
+        </h3>
+        <p class="faq-text">
+          You can dial our WhatsApp number to get connected with an errand runner and keep track of them through WhatsApp live location.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="faq">
+        <h3 class="faq-title">
+          Car Hire/ fleet services
+        </h3>
+        <p class="faq-text">
+          Through our fleet services, you can hire a car to run errands, or you can lend your car to an errand runner through us, and we will pay you.
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="faq">
+        <h3 class="faq-title">
+          business promotions
+        </h3>
+        <p class="faq-text">We can promote your business through word of mouth by giving out your flyers to our errand runners so they can market your services to our clients
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+      <p><strong>Got more questions? </strong> <span id="user-name"></span></p>
+        <p>We've got more answers. Keep scrolling...
+        </p>
+      
+        <div class="faq-container">
+          <div class="faq">
+            <h3 class="faq-title">
+              Can I verify a parking attendant?
+            </h3>
+    
+            <p class="faq-text">
+              Search the name or Attendant ID of your attendant, and if they are verified, you will find their profile.
+               <a href="parking.html">verify Attendent</a>
+            </p>
+    
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+    
+          <div class="faq">
+            <h3 class="faq-title">
+              How do request an errand runner or health care worker
+            </h3>
+            <p class="faq-text">
+              Send a message to our WhatsApp number, and we will link you with an errand runner or healthcare worker near you.
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="faq">
+            <h3 class="faq-title">
+              How safe Am I here?
+            </h3>
+            <p class="faq-text">By following various security and legal protocols, we ensure that your information remains safe and protected.
+               We thoroughly vet our errand runners and other service providers to maintain your safety and security.
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="faq">
+            <h3 class="faq-title">
+              How do I pay?
+            </h3>
+            
+            <p class="faq-text">
+              You can pay cash, online, through tickets, or by arrangement.
+  <br>
+  We offer the following arrangement options:
+  <br>Prepaid | starting from R2 per errand
+  <br>Weekly | starting from R50 per week (10 Errands)
+  <br>Monthly | starting from R150 per month (30 Errands)
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+  
+          <div class="faq">
+            <h3 class="faq-title">
+              How does phathisa Errand servce charge?
+            </h3>
+            <p class="faq-text">
+              Each errand runner adds their price on top of our base fee. Our fees are as follows:
+  <br>- We charge R2 per errand less than 10 minutes.
+  <br>- We charge R7 per errand over 15 minutes.
+  <br>- We charge R60 per errand less than or equal to 1 hour.
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+  
+          <div class="faq">
+            <h3 class="faq-title">
+              How do I sign-up to work as an errand runner
+            </h3>
+            <p class="faq-text">Becoming a Phathisa errand runner starts with creating an account, and vetting takes 3 days.
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+  
+          <div class="faq">
+            <h3 class="faq-title">
+              Which part of your services are currently available?
+            </h3>
+            <p class="faq-text">
+              Parking Attendant Services | Delivery Services | Fleet/Car Hire Services | Errand and WhatsApp Services
+            </p>
+            <button class="faq-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      <script>
+        const toggles = document.querySelectorAll('.faq-toggle')
+  
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      toggle.parentNode.classList.toggle('active')
+    })
+  })
+      </script>
+    </div>
+  </div>
+  <script>
+    let total = 0;
+  
+    function addToDisplay(amount) {
+      total += amount;
+      document.getElementById('display').textContent = "Total: R" + total;
+    }
+  
+    function payNow() {
+      // Display modal
+      document.getElementById('myModal').style.display = "block";
+    }
+  
+    function closeModal() {
+      // Close modal
+      document.getElementById('myModal').style.display = "none";
+    }
+  
+    function resetTotal() {
+      // Reset total to 0
+      total = 0;
+      document.getElementById('display').textContent = "Total: R" + total;
+    }
+  </script>
 
   <!-- Modal -->
   <style>
@@ -624,10 +934,14 @@
                     <!-- Search result will be displayed here -->
                 </div>
               </div>
-
+              
               <script>
                 function togglePay() {
                   window.location.href = "pay_balance.html";
+                }
+
+                function toggleSearch() {
+                  window.location.href = "search_car.html";
                 }
               </script>
                <script>
@@ -676,7 +990,8 @@
                         }
                         document.getElementById("searchResult").innerHTML = resultHTML;
                     } else {
-                        document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
+                        document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate + 
+                            '<button class="show-button" style="width: 100%;" type="submit" onclick="toggleSearch()">Deep Search</button>';
                     }
                 });
           
@@ -768,6 +1083,7 @@
           '<h4 class="result-heading">Username: <span class="result-data">' + result[i].username + '</span></h4>' +
           '<p class="result-info">Email: <span class="result-data">' + result[i].email + '</span></p>' +
           '<p class="result-info">Role: <span class="result-data">' + result[i].role + '</span></p>' +
+          '<button class="show-button" style="width: 100%;" type="submit" onclick="togglePay()">Pay Now</button>' +
           '</div>';
       }
       document.getElementById("searchResultCarGuard").innerHTML = resultHTML;
@@ -832,13 +1148,26 @@
     <div class="menu" id="menu">
       <!-- Your menu content goes here -->
       <span class="close-btn" onclick="toggleLeftMenu()">&#10006;</span>
+      <style>
+         .menu_list { 
+          width: 80%;
+                background-color: #ffffff;
+                border: none;
+                padding: 10px;
+                margin-bottom: 10px;
+                color: #6c6c6c;
+                font-size: 16px;
+                cursor: pointer;
+                font-weight: 700;
+      }
+        </style>
       <ul>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">History</a></li>
-        <li><a href="#">Wallet</a></li>
-        <li><a href="#">Gift Cards</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Help</a></li>
+        <li class="menu_list" onclick="payNow()">Profile</li>
+        <li class="menu_list" onclick="payNow()">History</li>
+        <li class="menu_list" onclick="payNow()">Wallet</li>
+        <li class="menu_list" onclick="payNow()">Gift Cards</li>
+        <li class="menu_list" onclick="payNow()">Settings</li>
+        <li class="menu_list" onclick="payNow()">Help</li>
       </ul>
     </div>
     <div class="right-menu-btn" onclick="toggleRightMenu()">

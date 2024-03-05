@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Parking History</title>
+  <title>Search Car Guard</title>
   <style>
     /* Your CSS styles here */
     .modal {
@@ -43,22 +43,23 @@
   </style>
 </head>
 <body>
-  <div class="dropdown" onclick="toggleDropdown(3)">
-    <button class="dropdown-button">Check your parking history</button>
-    <div id="dropdown-content-3" class="dropdown-content">
-      <p class="dropdown-description">Enter your Number Plate</p>
-      <form id="searchForm">
-        <input id="numberPlateInput" class="form-input" type="text" placeholder="Number Plate" onclick="stopPropagation(event)">
+  <div class="dropdown" onclick="toggleDropdown(1)">
+    <button class="dropdown-button">Search Car Guard</button>
+    <div id="dropdown-content-1" class="dropdown-content">
+      <p class="dropdown-description">Enter Car Guard Details</p>
+      <form id="searchFormCarGuard">
+        <label for="userNameInput">Enter Username:</label>
+        <input id="userNameInput" class="form-input" type="text" placeholder="Username" onclick="stopPropagation(event)">
         <button class="show-button" style="width: 100%;" type="submit">Search</button>
       </form>
     </div>
   </div>
 
-  <!-- Modal for Parking History Search Results -->
-  <div id="parkingHistoryModal" class="modal">
+  <!-- Modal for Car Guard Search Results -->
+  <div id="carGuardModal" class="modal">
     <div class="modal-content">
-      <span class="modal-close" onclick="closeModal('parkingHistoryModal')">&times;</span>
-      <div id="searchResult" class="result-container">
+      <span class="modal-close" onclick="closeModal('carGuardModal')">&times;</span>
+      <div id="searchResultCarGuard" class="result-container">
         <!-- Search result will be displayed here -->
         <p>Your Search results will show here</p>
       </div>
@@ -68,43 +69,37 @@
   <script>
     // Your JavaScript code here
     var database = [
-      { plate: "KC91SFGP", place: "Moaboneng", date: "16/02/2024", time_in: "14:34", time_out: "15:00", owing: "R10.00" },
-      { plate: "KC91SFGP", place: "Moaboneng", date: "19/02/2024", time_in: "13:31", time_out: "14:30", owing: "R30.00" },
-      { plate: "KC91SFGP", place: "Marshal Town, Johannesburg", date: "19/02/2024", time_in: "13:31", time_out: "12:30", owing: "R40.00" },
-      { plate: "CA93SFGP", place: "Borkburg North", date: "19/02/2024", time_in: "13:31", time_out: "12:30", owing: "R40.00" },
-      { plate: "CA93SFGP", place: "Sandton", date: "19/02/2024", time_in: "13:31", time_out: "12:30", owing: "R40.00" },
-      { plate: "MP94SFGP", place: "Rosebank", date: "19/02/2024", time_in: "13:31", time_out: "12:30", owing: "R40.00" }
+      { username: "MB1193843", email: "Mbongiseni Mdlolo@phathisa.co.za", role: "Marshal Town" },
+      { username: "JaneSmith", email: "jane@example.com", role: "user" },
+      { username: "AlexJohnson", email: "alex@example.com", role: "user" },
+      { username: "EmilyBrown", email: "emily@example.com", role: "user" }
     ];
 
-    document.getElementById("searchForm").addEventListener("submit", function(event) {
+    document.getElementById("searchFormCarGuard").addEventListener("submit", function(event) {
       event.preventDefault(); // Prevent form submission
-      var inputPlate = document.getElementById("numberPlateInput").value.toUpperCase();
-      var result = searchDatabase(inputPlate);
+      var inputUserName = document.getElementById("userNameInput").value.trim().toLowerCase();
+      var result = searchDatabase(inputUserName);
       if (result) {
-        // Displaying search result with multiple items
         var resultHTML = "";
         for (var i = 0; i < result.length; i++) {
           resultHTML += '<div class="result-item">' +
-            '<h4 class="result-heading">Plate number: <span class="result-data">' + result[i].plate + '</span></h4>' +
-            '<p class="result-info">Place: <span class="result-data">' + result[i].place + '</span></p>' +
-            '<p class="result-info">Date: <span class="result-data">' + result[i].date + '</span></p>' +
-            '<p class="result-info">Time In: <span class="result-data">' + result[i].time_in + '</span></p>' +
-            '<p class="result-info">Time Out: <span class="result-data">' + result[i].time_out + '</span></p>' +
-            '<p class="result-info">Owing: <span class="result-data">' + result[i].owing + '</span></p>' +
+            '<h4 class="result-heading">Username: <span class="result-data">' + result[i].username + '</span></h4>' +
+            '<p class="result-info">Email: <span class="result-data">' + result[i].email + '</span></p>' +
+            '<p class="result-info">Role: <span class="result-data">' + result[i].role + '</span></p>' +
             '</div>';
         }
-        document.getElementById("searchResult").innerHTML = resultHTML;
+        document.getElementById("searchResultCarGuard").innerHTML = resultHTML;
         // Display modal
-        document.getElementById("parkingHistoryModal").style.display = "block";
+        document.getElementById("carGuardModal").style.display = "block";
       } else {
-        document.getElementById("searchResult").innerHTML = "No matching record found for plate number: " + inputPlate;
+        document.getElementById("searchResultCarGuard").innerHTML = "No matching record found for user: " + inputUserName;
       }
     });
 
-    function searchDatabase(plate) {
+    function searchDatabase(username) {
       var results = [];
       for (var i = 0; i < database.length; i++) {
-        if (database[i].plate === plate) {
+        if (database[i].username.toLowerCase() === username) {
           results.push(database[i]);
         }
       }
